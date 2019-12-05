@@ -12,10 +12,17 @@ public class Media {
     protected String[] categories;
     protected int year;
     protected BufferedImage img;
-    protected ArrayList<Media> content;
+    public ArrayList<Media> content;
     protected ArrayList<Movie> movies;
     protected ArrayList<Series> series;
     //TODO protected HashMap<String, ArrayList> categorySearch;
+
+    public Media(){
+        //Ellen laver tom konstruktør til GUI
+        content = new ArrayList<>();
+        movies = new ArrayList<>();
+        series = new ArrayList<>();
+    }
 
     public Media(String title, int year, double rating, String[] categories, BufferedImage img) {
         content = new ArrayList<>();

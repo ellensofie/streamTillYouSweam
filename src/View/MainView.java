@@ -2,30 +2,39 @@ package View;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainView extends Application
-{
+public class MainView extends Application {
+
+    Stage stage;
+
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        primaryStage.setTitle("Stream till you sweam");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    public void start(Stage primaryStage) throws Exception {
+
+        stage = primaryStage;
+
+        //Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
+
+        stage.setTitle("Stream Till You Sweam");
+        stage.setScene(new Scene(root));
+        stage.show();
 
     }
+}
+
 
     /* Når denne metode kaldes, bliver scenen ændret til MediaPage fra Login */
-    public void changeScreen(ActionEvent event) throws IOException
+    /*public static void changeScreen(ActionEvent event) throws IOException
     {
         Parent mediaPageParent = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
         Scene mediaPageScene = new Scene(mediaPageParent);
