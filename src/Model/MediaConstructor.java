@@ -54,15 +54,14 @@ public class MediaConstructor {
                         }
                         series.add(episodes);
                         content.add(new Series(title, startYear, endYear, rating, categories, series));
-                    }
-                    else if (path.equals("./Data/film.txt")) {
+                    } else if (path.equals("./Data/film.txt")) {
                         content.add(new Movie(title, startYear, rating, categories));
-                    }
-                    else System.out.println("something went wrong :(");
+                    } else System.out.println("something went wrong :(");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
+
 }

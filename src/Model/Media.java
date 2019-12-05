@@ -12,15 +12,9 @@ public class Media {
     protected String[] categories;
     protected String year;
     protected BufferedImage img;
-    protected ArrayList<Media> content;
-    protected ArrayList<Movie> movies;
-    protected ArrayList<Series> series;
     //TODO protected HashMap<String, ArrayList> categorySearch;
 
     public Media(String title, String year, double rating, String[] categories, BufferedImage img) {
-        content = new ArrayList<>();
-        movies = new ArrayList<>();
-        series = new ArrayList<>();
         this.title = title;
         this.rating = rating;
         this.categories = categories;
