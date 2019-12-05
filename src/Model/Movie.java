@@ -6,13 +6,12 @@ import java.io.File;
 
 public class Movie extends Media{
 
-    public Movie(String title, int year,double rating, String[] categories, BufferedImage img) throws Exception {
-        super(title, year,rating, categories, img);
+    public Movie(String title, String year,double rating, String[] categories) throws Exception {
+        super(title, year,rating, categories, null);
         setImage();
     }
 
     public void play() {
-
     }
 
     public String[] getCategories(){
@@ -24,7 +23,7 @@ public class Movie extends Media{
     }
 
     public void setImage() throws Exception {
-        String imagePath = ("./filmplakater/billeder/"+this.title+".jpg");
+        String imagePath = ("./Billeder/film/"+this.title+".jpg");
         this.img = ImageIO.read(new File(imagePath));
 
     /*public void show(){

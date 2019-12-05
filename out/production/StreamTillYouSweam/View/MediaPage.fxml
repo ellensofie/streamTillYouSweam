@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="487.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaPageController">
@@ -8,4 +9,17 @@
       <HBox fx:id="serier" layoutY="367.0" prefHeight="120.0" prefWidth="647.0" spacing="5.0" style="-fx-background-color: #000000;" />
       <HBox fx:id="film" layoutY="222.0" prefHeight="120.0" prefWidth="647.0" spacing="5.0" style="-fx-background-color: #000000;" />
    </children>
+=======
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="View.MediaPageController"
+            prefHeight="400.0" prefWidth="600.0">
+
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
 </AnchorPane>

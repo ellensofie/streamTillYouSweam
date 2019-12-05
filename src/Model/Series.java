@@ -1,5 +1,7 @@
 package Model;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
@@ -7,24 +9,30 @@ import java.util.Objects;
 public class Series extends Media {
     // TODO seasons og episodes kan måske være en list of lists?
     protected ArrayList<ArrayList<Episode>> seasons;
-    protected int endYear;
+    protected String endYear;
 
-    public Series(String title,int year,int endYear, double rating, String[] categories,ArrayList<ArrayList<Episode>> seasons) {
+    public Series(String title,String year,String endYear, double rating, String[] categories,ArrayList<ArrayList<Episode>> seasons) throws Exception{
         super(title,year ,rating, categories,null);
         this.seasons = seasons;
-        this.endYear = Objects.requireNonNullElse(endYear, Calendar.getInstance().get(Calendar.YEAR));
+        this.endYear = endYear;
+        setImage();
     }
-
-    public void addSeason(int episodes) {
-        //this.seasons +=1;
-    }
-
     public ArrayList<ArrayList<Episode>> getSeasons() {
         return this.seasons;
     }
 
-    public int getEndYear() {
+    public String getEndYear() {
         return this.endYear;
+    }
+
+    public void setImage() throws Exception {
+        String imagePath = ("./Billeder/serier/"+this.title+".jpg");
+        this.img = ImageIO.read(new File(imagePath));
+    }
+
+    @Override
+    public String getTitle() {
+        return super.getTitle();
     }
 
     public void play() {}
