@@ -10,14 +10,14 @@ public class Media {
     protected String title;
     protected double rating;
     protected String[] categories;
-    protected int year;
+    protected String year;
     protected BufferedImage img;
     protected ArrayList<Media> content;
     protected ArrayList<Movie> movies;
     protected ArrayList<Series> series;
     //TODO protected HashMap<String, ArrayList> categorySearch;
 
-    public Media(String title, int year, double rating, String[] categories, BufferedImage img) {
+    public Media(String title, String year, double rating, String[] categories, BufferedImage img) {
         content = new ArrayList<>();
         movies = new ArrayList<>();
         series = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Media {
         return rating;
     }
 
-    public int getReleaseYear() {
+    public String getReleaseYear() {
         return year;
     }
 

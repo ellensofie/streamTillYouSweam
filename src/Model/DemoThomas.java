@@ -7,7 +7,7 @@ import java.io.IOException;
 public class DemoThomas {
     public static void main(String[] args) throws Exception {
         //Movie m = new Movie("Citizen Kane", 1972, 9.2, new String[]{"Crime", "Drama"},null);
-        Media m = new Movie("Citizen Kane", 1337, 13.37, new String[]{"War"}, null);
+        Media m = new Movie("Citizen Kane", "1337", 13.37, new String[]{"War"});
         //m.setImage();
         /*
         m.getImage();

@@ -20,8 +20,7 @@ public class FileReaderMovie {
                 String movieTitle = movieData[0];
 
                 //year
-                String yearString = movieData[1].trim();
-                int movieYear = Integer.parseInt(yearString);
+                String movieYear = movieData[1].trim();
 
                 //genre
                 String genreSpace = movieData[2].trim();
@@ -36,7 +35,7 @@ public class FileReaderMovie {
                 String ratingDot = ratingString.replaceAll(",", ".");  //Undgå NumberFormatException
                 double movieRating = Double.parseDouble(ratingDot);
                 //Opretter ny movie med ovenstående parametre, samt tilføjer objektet til "movies"
-                Movie movie = new Movie(movieTitle, movieYear, movieRating, genreArray,null);
+                Movie movie = new Movie(movieTitle, movieYear, movieRating, genreArray);
                 movies.add(movie);
 
                 /*
