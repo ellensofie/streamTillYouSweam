@@ -6,6 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<<<<<<< HEAD
+<AnchorPane fx:id="loginPane" prefHeight="496.0" prefWidth="797.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginController">
+    <children>
+=======
 <AnchorPane prefHeight="496.0" prefWidth="797.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginController">
     <children>
         <ImageView fitHeight="95.0" fitWidth="121.0" layoutX="351.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -13,6 +17,7 @@
                 <Image url="@../../../kisspng-smiley-computer-icons-emoticon-clip-art-save-png-happy-5ab0f8e33418a5.7258957515215474912134.png" />
             </image>
         </ImageView>
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
         <Label layoutX="305.0" layoutY="131.0" text="Stream" textFill="#247c73">
             <font>
                 <Font size="18.0" />
@@ -33,7 +38,11 @@
                 <Font size="18.0" />
             </font>
         </Label>
+<<<<<<< HEAD
+        <Button fx:id="btSignup" layoutX="718.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #14aaeb;" text="Sign up">
+=======
         <Button layoutX="718.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #14aaeb;" text="Sign up">
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
             <font>
                 <Font name="Bodoni 72 Smallcaps Book" size="13.0" />
             </font>
@@ -43,16 +52,32 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </Label>
+<<<<<<< HEAD
+        <TextField fx:id="txtUsername" layoutX="327.0" layoutY="249.0" onAction="#Login" promptText="Username" style="-fx-background-color: #373F51;">
+=======
         <TextField layoutX="327.0" layoutY="249.0" promptText="Username" style="-fx-background-color: #373F51;">
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
             <effect>
                 <Glow />
             </effect>
         </TextField>
+<<<<<<< HEAD
+        <PasswordField fx:id="txPassword" layoutX="327.0" layoutY="296.0" promptText="Password" style="-fx-background-color: #373F51;">
+=======
         <PasswordField layoutX="327.0" layoutY="296.0" promptText="Password" style="-fx-background-color: #373F51;">
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
             <effect>
                 <Glow />
             </effect>
         </PasswordField>
+<<<<<<< HEAD
+        <Button fx:id="btLogin" layoutX="375.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadMediaPage" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
+            <font>
+                <Font name="Bodoni 72 Smallcaps Book" size="13.0" />
+            </font>
+        </Button>
+=======
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
         <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="292.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../Data/user.png" />
@@ -63,10 +88,14 @@
                 <Image url="@../../Data/lock.png" />
             </image>
         </ImageView>
+<<<<<<< HEAD
+      <Label fx:id="lblStatus" layoutX="382.0" layoutY="210.0" text="Login" textFill="#247c73" />
+=======
         <Button layoutX="375.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
             <font>
                 <Font name="Bodoni 72 Smallcaps Book" size="13.0" />
             </font>
         </Button>
+>>>>>>> 2966776355d99208234b2e73722e7c2386b971c9
     </children>
 </AnchorPane>
