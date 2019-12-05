@@ -1,14 +1,17 @@
 package Model;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MediaCollection {
     protected ArrayList<Media> content;
 
     public MediaCollection() {
+
         content = new ArrayList<>();
     }
 
     public void addMedia(Media media) {
+
         content.add(media);
     }
 
@@ -46,10 +49,11 @@ public class MediaCollection {
         return movieWithTitle;
     }
 
+    //Equals fremfor contains i if-statement?
     public ArrayList<Media> searchCategory(String category) {
         ArrayList<Media> movieInCategory = new ArrayList<>();
         for(Media m : content){
-            if(m.getCategories().toString().contains(category)){
+            if(Arrays.toString(m.getCategories()).contains(category)){
                 movieInCategory.add(m);
             }
         }
