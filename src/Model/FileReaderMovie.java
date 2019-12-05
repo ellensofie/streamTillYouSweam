@@ -2,13 +2,18 @@ package Model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/*
 public class FileReaderMovie {
+    protected static ArrayList<Movie> movies;
+
+    public FileReaderMovie(){
+        movies = new ArrayList<>();
+    }
     public static void main(String[] args) {
-        ArrayList<Movie> movies = new ArrayList<>();
         try {
             File movieFile = new File("./Data/film.txt");
             Scanner sc = new Scanner(movieFile);
@@ -43,10 +48,10 @@ public class FileReaderMovie {
                 for(Movie m : movies){
                     m.show();
                 }
-                 */
+                */
 
                 //System.out.println(Arrays.toString(movieData));
-
+/*
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,4 +63,12 @@ public class FileReaderMovie {
 
 
     }
+
+    public ArrayList<Movie> getMovies(){
+        for(Movie m : movies){
+
+        }
+    }
 }
+
+ */
