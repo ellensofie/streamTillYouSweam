@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ImageReader {
 
     public static void main(String[] args) throws IOException {
-        String imagePath = "./filmplakater/billeder/.jpg";
+        String imagePath = "./Billeder/film/12 Angry Men.jpg";
         BufferedImage myImage = ImageIO.read(new File(imagePath));
 
         JLabel picLabel = new JLabel();
@@ -24,3 +24,4 @@ public class ImageReader {
 
     }
 }
+

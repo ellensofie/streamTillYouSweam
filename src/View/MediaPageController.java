@@ -1,14 +1,17 @@
 package View;
 
 import Model.Media;
+import Model.MediaConstructor;
 import Model.Movie;
 import Model.Series;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +27,7 @@ public class MediaPageController implements Initializable {
         Media m = new Media("lol","1999",9.6,new String[]{"jeg hader mac"},null);
         //MediaConstructor mc = new MediaConstructor();
         //mc.readMediaCollection();
+        MediaConstructor mc = new MediaConstructor();
 
 
 
@@ -33,12 +37,16 @@ public class MediaPageController implements Initializable {
             if (media instanceof Movie){
                 try {
                     //Opretter billede
-                    Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-                    System.out.println("filmplakater/Billeder/"+media.getImage());
+                    //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
+                    //System.out.println("filmplakater/Billeder/"+media.getImage());
+
+
+                    BufferedImage bufferedImage = (media.getImage());
+                    Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
                     //Opretter plads til billede i HBox
                     ImageView imageView = new ImageView();
-                    imageView.setImage(image);
+                    imageView.setImage(img);
 
                     //Indsætter billede i HBox
                     film.getChildren().addAll(imageView);

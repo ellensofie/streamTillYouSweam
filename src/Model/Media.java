@@ -54,7 +54,7 @@ public class Media {
         return categories[i];
     }
 
-    public Image getImage() throws Exception {
+    public BufferedImage getImage() throws Exception {
         return img;
     }
 
