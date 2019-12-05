@@ -12,39 +12,58 @@ public class MediaCollection {
         content.add(media);
     }
 
-    public Media getContent(){
+    public ArrayList<Media> getContent(){
+        return content;
+    }
+
+    public ArrayList<Media> getMovies() {
+        ArrayList<Media> movies = new ArrayList<>();
         for(Media m : content){
-            return m;
-        }
-        return null;
-    }
-
-    public Media getMovies() {
-        for (Media m : content) {
-            if (m instanceof Movie) {
-                return m;
+            if(m instanceof Movie){
+                movies.add(m);
             }
         }
-        return null;
+        return movies;
     }
 
-    public Media getSeries(){
-        for (Media m : content){
-            if (m instanceof Series) {
-                return m;
+    public ArrayList<Media> getSeries(){
+        ArrayList<Media> series = new ArrayList<>();
+        for(Media m : content){
+            if(m instanceof Series){
+                series.add(m);
             }
         }
-        return null;
+        return series;
     }
 
-    public void searchCategory(String category) {
-        for (Media m : content) {
-            for (int i = 0; i < m.getCategories().length; i++) {
-                if (m.getCategory(i).equals(category)) {
-                    System.out.println(m.getTitle());
-                }
+    public ArrayList<Media> searchTitle(String title){
+        ArrayList<Media> movieWithTitle = new ArrayList<>();
+        for(Media m : content){
+            if(m.getTitle().contains(title)){
+                movieWithTitle.add(m);
             }
         }
+        return movieWithTitle;
+    }
+
+    public ArrayList<Media> searchCategory(String category) {
+        ArrayList<Media> movieInCategory = new ArrayList<>();
+        for(Media m : content){
+            if(m.getCategories().toString().contains(category)){
+                movieInCategory.add(m);
+            }
+        }
+        return movieInCategory;
+    }
+
+    public ArrayList<Media> searchRating(int i){
+        ArrayList<Media> ratedMovies = new ArrayList<>();
+        for(Media m : content){
+            if(m.getRating() >= i){
+                ratedMovies.add(m);
+            }
+        }
+        return ratedMovies;
     }
 /*
     public void addMovieCollection(){
