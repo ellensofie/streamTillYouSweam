@@ -25,9 +25,10 @@ public class MediaPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Media m = new Media("lol","1999",9.6,new String[]{"jeg hader mac"},null);
-        //MediaConstructor mc = new MediaConstructor();
-        //mc.readMediaCollection();
+        //MediaConstructor mc = new MediaConstructor()
+        // mc.readMediaCollection();
         MediaConstructor mc = new MediaConstructor();
+        mc.readMediaCollection();
 
 
 

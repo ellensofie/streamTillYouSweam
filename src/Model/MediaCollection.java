@@ -1,5 +1,5 @@
 package Model;
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MediaCollection {
@@ -69,14 +69,6 @@ public class MediaCollection {
         }
         return ratedMovies;
     }
-/*
-    public void addMovieCollection(){
-        FileReaderMovie r = new FileReaderMovie();
-        addMedia(r.getMovies());
-        System.out.println(content.size());
-    }
-
- */
 
 }
 
