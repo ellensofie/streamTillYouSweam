@@ -97,7 +97,7 @@ public class MediaConstructor {
     public ArrayList<Media> searchTitle(String title){
         ArrayList<Media> movieWithTitle = new ArrayList<>();
         for(Media m : content){
-            if(m.getTitle().toLowerCase().startsWith(title.toLowerCase())){ //startsWith i stedet for .Contains & toLowerCase for bedre nemmere søgning
+            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){ //startsWith i stedet for .Contains & toLowerCase for bedre nemmere søgning
                 movieWithTitle.add(m);
             }
         }

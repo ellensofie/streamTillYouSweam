@@ -67,15 +67,14 @@ public class MediaPageController implements Initializable {
     series.getChildren().clear(); //fjern alle gamle serier når man søger
     film.getChildren().clear();  //fjern alle gamle film når man søger
 
-        ArrayList<Media> mediaer = mc.searchTitle(txtSearch.getText()); //søg på alle mediaer som starter med søgeteksten
-
-        for (Media media : mediaer) { //løb alle mediaer igennem
-
-            if (media instanceof Movie) { //type tjek på Movie
-                insertMovie(media); //hvis mediet er en Movie så tilføj
-            }
-            if (media instanceof Series) { //type tjek på Series
-                insertSerie(media); //hvis mediet er en Series så tilføj
+        for(Media m : mc.searchTitle(txtSearch.getText())) {
+            {
+                if (m instanceof Movie) { //type tjek på Movie
+                    insertMovie(m); //hvis mediet er en Movie så tilføj
+                }
+                if (m instanceof Series) { //type tjek på Series
+                    insertSerie(m); //hvis mediet er en Series så tilføj
+                }
             }
         }
 
