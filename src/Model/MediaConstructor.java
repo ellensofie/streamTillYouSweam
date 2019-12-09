@@ -114,10 +114,10 @@ public class MediaConstructor {
         return movieInCategory;
     }
 
-    public ArrayList<Media> searchRating(int i){
+    public ArrayList<Media> searchRating(int rating){
         ArrayList<Media> ratedMovies = new ArrayList<>();
         for(Media m : content){
-            if(m.getRating() >= i){
+            if(m.getRating() >= rating){
                 ratedMovies.add(m);
             }
         }
