@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,12 +33,13 @@ public class MediaPageController implements Initializable {
     @FXML Button btnSearch;
     @FXML Button btnMyList;
     @FXML Button btnCategories;
+    @FXML TextField txtSearch;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MediaConstructor mc = new MediaConstructor();
         //mc.readMediaCollection();
-        
+
         try {
             mc.readMediaCollection();
         } catch (Exception e) {
@@ -45,33 +47,28 @@ public class MediaPageController implements Initializable {
         }
 
         //Løber gennem alle Media objekter
-            for (Media media : mc.getContent()) {
-                //Tjekker om media er en film
-                if (media instanceof Movie) {
-                    try {
-                        //Opretter billede
-                        //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-                        //System.out.println("filmplakater/Billeder/" + media.getImage());
+        for (Media media : mc.getContent()) {
+            //Tjekker om media er en film
+            if (media instanceof Movie) {
+                try {
+                    //Opretter billede
+                    //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
+                    //System.out.println("filmplakater/Billeder/" + media.getImage());
 
-                        BufferedImage bufferedImage = (BufferedImage) media.getImage();
-                        Image img = SwingFXUtils.toFXImage(bufferedImage,null);
+                    BufferedImage bufferedImage = (BufferedImage) media.getImage();
+                    Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
-                        //Opretter plads til billede i HBox
-                        ImageView imageView = new ImageView();
-                        imageView.setImage(img);
+                    //Opretter plads til billede i HBox
+                    ImageView imageView = new ImageView();
+                    imageView.setImage(img);
 
-                        //Indsætter billede i HBox
-                        film.getChildren().addAll(imageView);
+                    //Indsætter billede i HBox
+                    film.getChildren().addAll(imageView);
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-
-            //Løber gennem alle Media objekter
-        for (Media media : mc.getContent()) {
-            //Tjekker om media er en serie
             if (media instanceof Series) {
                 //Opretter billede
                 try {
@@ -79,7 +76,7 @@ public class MediaPageController implements Initializable {
                     //System.out.println("filmplakater/Billeder/" + media.getImage());
 
                     BufferedImage bufferedImage = (BufferedImage) media.getImage();
-                    Image img = SwingFXUtils.toFXImage(bufferedImage,null);
+                    Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
                     //Opretter plads til billede i HBox
                     ImageView imageView = new ImageView();
@@ -93,8 +90,12 @@ public class MediaPageController implements Initializable {
                 }
             }
         }
+    }
 
-    //TODO myList i stedet for null
+
+}
+
+        //TODO myList i stedet for null
 
 
         /* Følgende kode stump har med btnSearch at gøre */
@@ -121,5 +122,4 @@ public class MediaPageController implements Initializable {
             }
         });
     }*/
-}
-}
+

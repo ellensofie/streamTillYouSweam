@@ -15,15 +15,15 @@ import java.io.IOException;
 
 public class MainView extends Application {
 
-    Stage stage;
+    private Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         stage = primaryStage;
 
-        //Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
 
         stage.setTitle("Stream Till You Sweam");
         stage.setScene(new Scene(root));
@@ -33,7 +33,7 @@ public class MainView extends Application {
 }
 
 
-    /* Når denne metode kaldes, bliver scenen ændret til MediaPage fra Login */
+/* Når denne metode kaldes, bliver scenen ændret til MediaPage fra Login */
     /*public static void changeScreen(ActionEvent event) throws IOException
     {
         Parent mediaPageParent = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));

@@ -19,6 +19,7 @@
             <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Search" />
             <Button fx:id="btnMyList" mnemonicParsing="false" prefHeight="29.0" prefWidth="133.0" text="My list" />
             <Button fx:id="btnCategories" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Categories" />
+            <TextField fx:id="txtSearch" />
          </children>
       </VBox>
    </children>
