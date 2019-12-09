@@ -2,13 +2,13 @@ package Model;
 
 import java.util.ArrayList;
 
-public class User {
+public class Account {
     protected String username;
     protected String password;
     protected ArrayList<Media> myList;
 
 
-    public User(){
+    public Account(){
         myList = new ArrayList<>();
     }
 
