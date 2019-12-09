@@ -38,7 +38,7 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="txtUsername" layoutX="327.0" layoutY="249.0" onAction="#Login" promptText="Username" style="-fx-background-color: #373F51;">
+        <TextField fx:id="txtUsername" layoutX="327.0" layoutY="249.0" onAction="#login" promptText="Username" style="-fx-background-color: #373F51;">
             <effect>
                 <Glow />
             </effect>
@@ -48,7 +48,7 @@
                 <Glow />
             </effect>
         </PasswordField>
-        <Button fx:id="btLogin" layoutX="375.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadMediaPage" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
+        <Button fx:id="btLogin" layoutX="375.0" layoutY="348.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
             <font>
                 <Font name="Bodoni 72 Smallcaps Book" size="13.0" />
             </font>

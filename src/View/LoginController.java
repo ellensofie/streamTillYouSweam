@@ -1,12 +1,12 @@
 package View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,16 +30,17 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane loginPane;
 
-    public void initialize(URL location, ResourceBundle resources) {
+public void initialize(URL location, ResourceBundle resources) {
 
-    }
+}
 
-    public void Login(ActionEvent event) {
-        //MainView.changeScreen(event);
-    }
 
     public void loadMediaPage(ActionEvent event) {
 
+    }
+
+
+    public void login(ActionEvent event) {
     }
 }
     /* Denne metode gør, at Login label ændrer sig til Login failed */
