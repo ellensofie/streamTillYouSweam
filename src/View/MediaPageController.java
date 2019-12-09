@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -20,6 +21,7 @@ import javafx.scene.layout.HBox;
 
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MediaPageController implements Initializable {
@@ -34,11 +36,9 @@ public class MediaPageController implements Initializable {
     @FXML Button btnMyList;
     @FXML Button btnCategories;
     @FXML TextField txtSearch;
-
+    MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MediaConstructor mc = new MediaConstructor();
-        //mc.readMediaCollection();
 
         try {
             mc.readMediaCollection();
@@ -50,48 +50,78 @@ public class MediaPageController implements Initializable {
         for (Media media : mc.getContent()) {
             //Tjekker om media er en film
             if (media instanceof Movie) {
-                try {
-                    //Opretter billede
-                    //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-                    //System.out.println("filmplakater/Billeder/" + media.getImage());
-
-                    BufferedImage bufferedImage = (BufferedImage) media.getImage();
-                    Image img = SwingFXUtils.toFXImage(bufferedImage, null);
-
-                    //Opretter plads til billede i HBox
-                    ImageView imageView = new ImageView();
-                    imageView.setImage(img);
-
-                    //Indsætter billede i HBox
-                    film.getChildren().addAll(imageView);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                insertMovie(media);
             }
             if (media instanceof Series) {
-                //Opretter billede
-                try {
-                    //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-                    //System.out.println("filmplakater/Billeder/" + media.getImage());
-
-                    BufferedImage bufferedImage = (BufferedImage) media.getImage();
-                    Image img = SwingFXUtils.toFXImage(bufferedImage, null);
-
-                    //Opretter plads til billede i HBox
-                    ImageView imageView = new ImageView();
-                    imageView.setImage(img);
-
-                    //Indsætter billede i HBox
-                    series.getChildren().addAll(imageView);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                insertSerie(media);
             }
         }
     }
 
+    public void btnSearchFunction(){
+        searchFunction();
+    } //Søge knap kalder vores søgefunktion
+
+    public void searchFunction(){
+
+    series.getChildren().clear(); //fjern alle gamle serier når man søger
+    film.getChildren().clear();  //fjern alle gamle film når man søger
+
+        ArrayList<Media> mediaer = mc.searchTitle(txtSearch.getText()); //søg på alle mediaer som starter med søgeteksten
+
+        for (Media media : mediaer) { //løb alle mediaer igennem
+
+            if (media instanceof Movie) { //type tjek på Movie
+                insertMovie(media); //hvis mediet er en Movie så tilføj
+            }
+            if (media instanceof Series) { //type tjek på Series
+                insertSerie(media); //hvis mediet er en Series så tilføj
+            }
+        }
+
+    }
+
+    public void insertMovie(Media media){
+        try {
+            //Opretter billede
+            //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
+            //System.out.println("filmplakater/Billeder/" + media.getImage());
+
+            BufferedImage bufferedImage = (BufferedImage) media.getImage();
+            Image img = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            //Opretter plads til billede i HBox
+            ImageView imageView = new ImageView();
+            imageView.setImage(img);
+
+            //Indsætter billede i HBox
+            film.getChildren().addAll(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertSerie(Media media){
+        //Opretter billede
+        try {
+            //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
+            //System.out.println("filmplakater/Billeder/" + media.getImage());
+
+            BufferedImage bufferedImage = (BufferedImage) media.getImage();
+            Image img = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            //Opretter plads til billede i HBox
+            ImageView imageView = new ImageView();
+            imageView.setImage(img);
+
+            //Indsætter billede i HBox
+            series.getChildren().addAll(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 

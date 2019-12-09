@@ -1,5 +1,6 @@
 package Model;
 
+import javax.swing.text.AbstractDocument;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class MediaConstructor {
     public ArrayList<Media> searchTitle(String title){
         ArrayList<Media> movieWithTitle = new ArrayList<>();
         for(Media m : content){
-            if(m.getTitle().contains(title)){
+            if(m.getTitle().toLowerCase().startsWith(title.toLowerCase())){ //startsWith i stedet for .Contains & toLowerCase for bedre nemmere søgning
                 movieWithTitle.add(m);
             }
         }
