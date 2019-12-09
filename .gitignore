@@ -1,8 +1,6 @@
 # Default ignored files
 
 /.idea/workspace.xml
-.idea/
-*.iml
 
 # Compiled class file
 *.class
@@ -14,8 +12,8 @@
 *.ctxt
 
 # IntelliJ
-.idea/
-*.iml
+#.idea/    -- removed by raisa
+#*.iml     -- removed by raisa
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
