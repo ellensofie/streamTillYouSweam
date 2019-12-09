@@ -12,16 +12,8 @@ public class Media {
     protected String[] categories;
     protected String year;
     protected BufferedImage img;
-    public ArrayList<Media> content;
-    protected ArrayList<Movie> movies;
-    protected ArrayList<Series> series;
-    //TODO protected HashMap<String, ArrayList> categorySearch;
 
 /*    public Media(){
-        //Ellen laver tom konstruktør til GUI
-        content = new ArrayList<>();
-        movies = new ArrayList<>();
-        series = new ArrayList<>();
     }
 
     public Media(String title, int year, double rating, String[] categories, BufferedImage img) {
@@ -74,16 +66,6 @@ public class Media {
 
      */
 
-    public void searchCategory2(String category) {
-        //for (Media m : content) {
-        //  System.out.println("1");
-        for (int i = 0; i < getCategories().length; i++) {
-            System.out.println("2");
-            if (getCategory(i).equals(category)) {
-                System.out.println(getTitle());
-            }
-            //}
-        }
     }
 
 }

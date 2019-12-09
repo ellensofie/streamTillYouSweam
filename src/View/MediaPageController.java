@@ -28,7 +28,7 @@ public class MediaPageController implements Initializable {
         //MediaConstructor mc = new MediaConstructor()
         // mc.readMediaCollection();
         MediaConstructor mc = new MediaConstructor();
-        mc.readMediaCollection();
+        //mc.readMediaCollection();
 
 
 

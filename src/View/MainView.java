@@ -22,8 +22,8 @@ public class MainView extends Application {
 
         stage = primaryStage;
 
-        //Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
 
         stage.setTitle("Stream Till You Sweam");
         stage.setScene(new Scene(root));
