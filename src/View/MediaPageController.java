@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -21,7 +22,6 @@ import javafx.scene.layout.HBox;
 
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MediaPageController implements Initializable {
@@ -36,6 +36,8 @@ public class MediaPageController implements Initializable {
     @FXML Button btnMyList;
     @FXML Button btnCategories;
     @FXML TextField txtSearch;
+
+
     MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,7 +79,6 @@ public class MediaPageController implements Initializable {
                 }
             }
         }
-
     }
 
     public void insertMovie(Media media){

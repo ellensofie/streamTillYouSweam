@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.MediaMainPage"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
+   <center>
+      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="vBoxFilm" prefHeight="389.0" prefWidth="585.0">
+               <children>
+                  <Label fx:id="lbMyList" text="My List">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="spMyList" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                     <content>
+                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" prefHeight="150.0" prefWidth="890.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label fx:id="lbFilm" text="Movie">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="spMovie" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                     <content>
+                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" prefHeight="150.0" prefWidth="890.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label fx:id="lbSeries" text="Series">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="spSeries" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                     <content>
+                        <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </children></VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
