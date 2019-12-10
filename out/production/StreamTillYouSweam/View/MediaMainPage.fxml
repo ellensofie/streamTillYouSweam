@@ -45,7 +45,7 @@
                   </ScrollPane>
                   <Label fx:id="lbSeries" text="Series">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -59,7 +59,7 @@
                            </padding></HBox>
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
                      </VBox.margin>
                   </ScrollPane>
                </children></VBox>

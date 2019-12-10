@@ -43,7 +43,7 @@
                 <Glow />
             </effect>
         </PasswordField>
-        <Button fx:id="btSignup" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #14aaeb;" text="Create user" textAlignment="CENTER">
+        <Button fx:id="btSignup" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#createAccount" style="-fx-background-color: #14aaeb;" text="Create user" textAlignment="CENTER">
             <font>
                 <Font name="Helvetica" size="13.0" />
             </font>

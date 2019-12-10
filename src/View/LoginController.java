@@ -21,7 +21,7 @@ public class LoginController implements Initializable {
     private Label lblStatus;
 
     @FXML
-    private TextField txtUsername;
+    private TextField txtEmail;
 
     @FXML
     private TextField txPassword;
@@ -40,7 +40,7 @@ public void initialize(URL location, ResourceBundle resources) {
 }
 
     public void login(ActionEvent event) throws Exception {
-        if(txtUsername.getText().equals("user") && txPassword.getText().equals("pass")) { //tjek om username er "user" og password er "pass"
+        if(txtEmail.getText().equals("user") && txPassword.getText().equals("pass")) { //tjek om Email er "user" og password er "pass"
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaPage.fxml ind
 
@@ -66,7 +66,7 @@ public void initialize(URL location, ResourceBundle resources) {
 }
     /* Denne metode gør, at Login label ændrer sig til Login failed */
 /*    public void Login(ActionEvent event){
-        if(txtUsername.getText().equals("user") && txPassword.getText().equals("pass")) {
+        if(txtEmail.getText().equals("user") && txPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
         }
         else {

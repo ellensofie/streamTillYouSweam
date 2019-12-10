@@ -44,10 +44,10 @@ public class SignUpPageController implements Initializable{
     private TextField txtUsername;
 
     @FXML
-    private TextField txPassword;
+    private TextField txtPassword;
 
     @FXML
-    private PasswordField txEmail;
+    private TextField txtEmail;
 
     @FXML
     private Button btSignup;
@@ -71,7 +71,7 @@ public class SignUpPageController implements Initializable{
     }
 
     public void login(ActionEvent event) throws Exception {
-        if(txtUsername.getText().equals("user") && txPassword.getText().equals("pass") && txEmail.getText().equals("user@email.com")) { //tjek om username er "user" og password er "pass"
+        if(txtUsername.getText().equals("user") && txtPassword.getText().equals("pass") && txtEmail.getText().equals("user@email.com")) { //tjek om username er "user" og password er "pass"
             Stage stage = (Stage)btSignup.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml")); //loader MediaPage.fxml ind
 
@@ -85,9 +85,10 @@ public class SignUpPageController implements Initializable{
 
     }
 
-    /*public void creatAccount(ActionEvent e){
-        new Account()
+    public void createAccount(ActionEvent e) throws IOException {
+        Account a = new Account(txtUsername.getText(), txtEmail.getText(), txtPassword.getText());
+        a.createAccountFile();
+        goBack(e);
+
     }
-    
-     */
 }
