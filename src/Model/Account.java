@@ -1,7 +1,9 @@
 package Model;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,7 +14,7 @@ public class Account {
     protected ArrayList<Media> myList;
 
 
-    public Account(String username, String email,String password){
+    public Account(String username, String email,String password) throws FileAlreadyExistsException{
         this.username = username;
         this.email = email;
         this.password = password;
@@ -24,16 +26,22 @@ public class Account {
         this.myList = new ArrayList<>();
     }
 
-    public void createAccountFile(){
-        try {
-            PrintWriter writer = new PrintWriter("./Data/Accounts/"+this.email+".txt", StandardCharsets.ISO_8859_1);
-            writer.println(this.username+";"+this.email+";"+this.password);
-            for (Media m:myList) {
-                writer.print(m.title+";");
+    public void createAccountFile() throws FileAlreadyExistsException{
+        File currFile = new File("./Data/Accounts/"+email+".txt");
+        if (!currFile.exists()) {
+            try {
+                PrintWriter writer = new PrintWriter("./Data/Accounts/" + email + ".txt", StandardCharsets.ISO_8859_1);
+                writer.println(username + ";" + email + ";" + password);
+                for (Media m : myList) {
+                    writer.print(m.title + ";");
+                }
+                writer.close();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        else {
+            throw new FileAlreadyExistsException("./Data/Accounts/"+email+".txt");
         }
     }
     public void addMyList(Media m){
