@@ -42,7 +42,7 @@ public void initialize(URL location, ResourceBundle resources) {
     public void login(ActionEvent event) throws Exception {
         if(txtUsername.getText().equals("user") && txPassword.getText().equals("pass")) { //tjek om username er "user" og password er "pass"
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml")); //loader MediaPage.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaPage.fxml ind
 
             Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
