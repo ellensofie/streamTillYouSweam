@@ -10,7 +10,10 @@
       <HBox fx:id="myList" layoutX="136.0" layoutY="81.0" prefHeight="120.0" prefWidth="771.0" spacing="10" style="-fx-background-color: #000000;" AnchorPane.leftAnchor="136.0">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding></HBox>
+         </padding>
+         <children>
+            <ScrollPane prefHeight="118.0" prefWidth="579.0" />
+         </children></HBox>
       <HBox fx:id="series" layoutX="136.0" layoutY="353.0" prefHeight="120.0" prefWidth="771.0" spacing="10" style="-fx-background-color: #49a1ee;">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -18,7 +21,10 @@
       <HBox fx:id="film" layoutX="136.0" layoutY="218.0" prefHeight="120.0" prefWidth="771.0" spacing="10" style="-fx-background-color: #49a1ee;">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding></HBox>
+         </padding>
+         <children>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" />
+         </children></HBox>
       <Label layoutX="759.0" layoutY="14.0" text="Stream til you sweam">
          <font>
             <Font name="System Bold" size="13.0" />
