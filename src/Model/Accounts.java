@@ -12,4 +12,12 @@ public class Accounts {
     public ArrayList<Account> getAccounts(){
         return accounts;
     }
+
+    public void addAccount(Account a){
+        accounts.add(a);
+    }
+
+    public void newUser(String username, String password, int age){
+        accounts.add(new Account(username, password, age));
+    }
 }

@@ -1,14 +1,17 @@
 package Model;
 
 import java.util.ArrayList;
-
 public class Account {
     protected String username;
     protected String password;
+    protected int age;
     protected ArrayList<Media> myList;
 
 
-    public Account(){
+    public Account(String username, String password, int age){
+        this.username = username;
+        this.password = password;
+        this.age = age;
         myList = new ArrayList<>();
     }
 
