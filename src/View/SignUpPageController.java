@@ -1,9 +1,6 @@
 package View;
 
-import Model.Media;
-import Model.Movie;
-import Model.Series;
-import Model.MediaConstructor;
+import Model.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -87,4 +84,10 @@ public class SignUpPageController implements Initializable{
         }
 
     }
+
+    /*public void creatAccount(ActionEvent e){
+        new Account()
+    }
+    
+     */
 }
