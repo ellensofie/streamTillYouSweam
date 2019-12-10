@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -7,41 +8,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="766.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
    <center>
-      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="739.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="vBoxFilm" prefHeight="389.0" prefWidth="585.0">
+            <VBox fx:id="vBoxFilm" prefHeight="566.0" prefWidth="723.0">
                <children>
                   <Label fx:id="lbMyList" text="My List">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
                   </Label>
                   <ScrollPane fx:id="spMyList" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" prefHeight="150.0" prefWidth="890.0" />
+                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="890.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
                   <Label fx:id="lbFilm" text="Movie">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
-                  <ScrollPane fx:id="spMovie" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="spMovie" hbarPolicy="NEVER" prefHeight="365.0" prefWidth="598.0" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" prefHeight="150.0" prefWidth="890.0" />
+                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" prefHeight="152.0" prefWidth="829.0" spacing="10.0">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></HBox>
                      </content>
                   </ScrollPane>
                   <Label fx:id="lbSeries" text="Series">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
-                  <ScrollPane fx:id="spSeries" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="spSeries" hbarPolicy="NEVER" prefHeight="444.0" prefWidth="764.0" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" />
+                        <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" prefHeight="225.0" prefWidth="707.0" spacing="10.0">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></HBox>
                      </content>
+                     <VBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
+                     </VBox.margin>
                   </ScrollPane>
                </children></VBox>
          </content>

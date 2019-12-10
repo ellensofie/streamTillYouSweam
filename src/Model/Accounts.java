@@ -17,7 +17,9 @@ public class Accounts {
         accounts.add(a);
     }
 
-    public void newUser(String username, String password, int age){
-        accounts.add(new Account(username, password, age));
+    public void loadAccounts(){}
+
+    public void newUser(String username, String email,String password){
+        accounts.add(new Account(username, email, password));
     }
 }
