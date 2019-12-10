@@ -32,12 +32,12 @@
                 <Glow />
             </effect>
         </TextField>
-        <PasswordField fx:id="txPassword" layoutX="327.0" layoutY="296.0" promptText="Password" style="-fx-background-color: #373F51;">
+        <PasswordField fx:id="txtPassword" layoutX="327.0" layoutY="296.0" promptText="Password" style="-fx-background-color: #373F51;">
             <effect>
                 <Glow />
             </effect>
         </PasswordField>
-        <Button fx:id="btLogin" layoutX="379.0" layoutY="331.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
+        <Button fx:id="btLogin" layoutX="379.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginProper" style="-fx-background-color: #14aaeb;" text="Login" textAlignment="CENTER">
             <font>
                 <Font name="Helvetica" size="15.0" />
             </font>

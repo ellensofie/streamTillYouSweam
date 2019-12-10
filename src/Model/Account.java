@@ -19,7 +19,6 @@ public class Account {
         this.email = email;
         this.password = password;
         this.myList = new ArrayList<Media>();
-        createAccountFile();
     }
 
     public void loadMyList(String email) {
