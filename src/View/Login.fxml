@@ -63,6 +63,6 @@
                 <Image url="@../../Data/lock.png" />
             </image>
         </ImageView>
-      <Label fx:id="lblStatus" layoutX="382.0" layoutY="210.0" text="Login" textFill="#247c73" />
+      <Label fx:id="lblStatus" layoutX="372.0" layoutY="203.0" prefHeight="23.0" prefWidth="90.0" text="Login" textAlignment="CENTER" textFill="#247c73" />
     </children>
 </AnchorPane>
