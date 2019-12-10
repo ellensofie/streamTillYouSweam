@@ -5,8 +5,13 @@ import Model.MediaConstructor;
 import Model.Movie;
 import Model.Series;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -14,8 +19,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,6 +51,8 @@ public class MediaMainPageController implements Initializable{
     @FXML ScrollPane spSeries;
 
     @FXML HBox hbSeries;
+
+    @FXML Button logOutButton;
 
         private ImageView imageview;
 
@@ -110,6 +119,15 @@ public class MediaMainPageController implements Initializable{
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+
+        public void logOut(ActionEvent e) throws IOException {
+            Stage stage = (Stage)logOutButton.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
 
     }
