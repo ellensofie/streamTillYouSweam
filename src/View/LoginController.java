@@ -53,6 +53,16 @@ public void initialize(URL location, ResourceBundle resources) {
         }
 
     }
+
+    public void signUp(ActionEvent event) throws Exception {
+            Stage stage = (Stage)btSignup.getScene().getWindow(); //Henter button-logins scene/vindue
+            Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml")); //loader MediaPage.fxml ind
+
+            Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+            stage.setScene(scene); //Sætter scenen
+            stage.show(); //viser scenen for brugeren
+
+    }
 }
     /* Denne metode gør, at Login label ændrer sig til Login failed */
 /*    public void Login(ActionEvent event){
