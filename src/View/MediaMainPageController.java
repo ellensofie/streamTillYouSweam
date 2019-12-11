@@ -111,8 +111,8 @@ public class MediaMainPageController implements Initializable{
 
                 imageView.setImage(img);
             //Opretter plads til billede i HBox
-            ImageView imageView = new ImageView();
-            imageView.setImage(img);
+            //ImageView imageView = new ImageView();
+            //imageView.setImage(img);
 
             //Indsætter billede i HBox
             hbFilm.getChildren().addAll(imageView);
