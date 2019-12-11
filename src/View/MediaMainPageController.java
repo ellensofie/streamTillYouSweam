@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -54,6 +55,8 @@ public class MediaMainPageController implements Initializable{
     @FXML HBox hbSeries;
 
     @FXML Button logOutButton;
+
+        protected Media selectedMedia;
 
 
     MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
@@ -88,6 +91,25 @@ public class MediaMainPageController implements Initializable{
             BufferedImage bufferedImage = (BufferedImage) media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
+                //Opretter plads til billede i HBox
+                ImageView imageView = new ImageView();
+
+                imageView.setOnMouseClicked(mouseEvent -> {
+                    System.out.println(media.getTitle());
+                    Stage stage = (Stage)imageView.getScene().getWindow(); //Henter button-logins scene/vindue
+                    Parent root = null; //loader MediaPageSpecific.fxml ind
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+                    stage.setScene(scene); //Sætter scenen
+                    stage.show(); //viser scenen for brugeren
+                });
+
+                imageView.setImage(img);
             //Opretter plads til billede i HBox
             ImageView imageView = new ImageView();
             imageView.setImage(img);
@@ -116,6 +138,12 @@ public class MediaMainPageController implements Initializable{
             //Indsætter billede i HBox
             hbSeries.getChildren().addAll(imageView);
 
+                imageView.setOnMouseClicked(mouseEvent -> {
+                    System.out.println("You clicked " + media.getTitle());
+                });
+
+                //Indsætter billede i HBox
+                hbSeries.getChildren().addAll(imageView);
         } catch (Exception e) {
             e.printStackTrace();
         }
