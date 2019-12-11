@@ -63,9 +63,9 @@ public class SignUpPageController implements Initializable{
 
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml")); //loader MediaPage.fxml ind
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml")); //loader Login.fxml ind
 
-        Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+        Scene scene = new Scene(root); //opretter ny scene med Login.fxml som indhold
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
@@ -73,9 +73,9 @@ public class SignUpPageController implements Initializable{
     public void login(ActionEvent event) throws Exception {
         if(txtUsername.getText().equals("user") && txtPassword.getText().equals("pass") && txtEmail.getText().equals("user@email.com")) { //tjek om username er "user" og password er "pass"
             Stage stage = (Stage)btSignup.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml")); //loader MediaPage.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
 
-            Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+            Scene scene = new Scene(root); //opretter ny scene med MediaMediaPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
         }

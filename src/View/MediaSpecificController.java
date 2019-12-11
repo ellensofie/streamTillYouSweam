@@ -65,9 +65,9 @@ public class MediaSpecificController implements Initializable {
 
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
-        Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaPage.fxml ind
+        Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainpage.fxml ind
 
-        Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+        Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
