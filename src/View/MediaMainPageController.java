@@ -34,7 +34,7 @@ public class MediaMainPageController implements Initializable{
 
     @FXML ScrollPane bpScrollPane;
 
-    @FXML VBox VBoxFilm;
+    @FXML VBox vBoxFilm;
 
     @FXML Label lbMyList;
 
@@ -55,6 +55,14 @@ public class MediaMainPageController implements Initializable{
     @FXML HBox hbSeries;
 
     @FXML Button logOutButton;
+
+    @FXML Button btMovies;
+
+    @FXML Button btSeries;
+
+    @FXML Button btSearch;
+
+    @FXML Button txtSearch;
 
         protected Media selectedMedia;
 
@@ -180,6 +188,36 @@ public class MediaMainPageController implements Initializable{
     public void logOut(ActionEvent e) throws IOException {
         Stage stage = (Stage)logOutButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void btSearchFunction(){
+        searchFunction();
+    } //Søge knap kalder vores søgefunktion
+
+    public void searchFunction(){
+
+        hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
+        hbFilm.getChildren().clear();  //fjern alle gamle film når man søger
+
+        for(Media m : mc.searchTitle(txtSearch.getText())) {
+            {
+                if (m instanceof Movie) { //type tjek på Movie
+                    insertMovie(m); //hvis mediet er en Movie så tilføj
+                }
+                if (m instanceof Series) { //type tjek på Series
+                    insertSerie(m); //hvis mediet er en Series så tilføj
+                }
+            }
+        }
+    }
+
+    public void btMovies() throws IOException {
+        Stage stage = (Stage)btMovies.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("Movies.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
