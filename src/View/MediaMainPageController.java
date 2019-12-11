@@ -104,7 +104,7 @@ public class MediaMainPageController implements Initializable{
                         e.printStackTrace();
                     }
 
-                    Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+                    Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
                     stage.setScene(scene); //Sætter scenen
                     stage.show(); //viser scenen for brugeren
                 });

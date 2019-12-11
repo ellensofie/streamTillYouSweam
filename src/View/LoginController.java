@@ -47,9 +47,9 @@ public class LoginController implements Initializable {
     public void login(ActionEvent event) throws Exception {
         if(txtEmail.getText().equals("user") && txtPassword.getText().equals("pass")) { //tjek om Email er "user" og password er "pass"
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaPage.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
 
-            Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+            Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
         }
@@ -66,9 +66,9 @@ public class LoginController implements Initializable {
             String[] firstLine = lines.split(";");
             user = new Account(firstLine[0],txtEmail.getText(),txtPassword.getText());
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaPage.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
 
-            Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+            Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
         }
@@ -87,9 +87,9 @@ public class LoginController implements Initializable {
 
     public void signUp(ActionEvent event) throws Exception {
             Stage stage = (Stage)btSignup.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml")); //loader MediaPage.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml")); //loader SignUpPage.fxml ind
 
-            Scene scene = new Scene(root); //opretter ny scene med MediaPage.fxml som indhold
+            Scene scene = new Scene(root); //opretter ny scene med SignUpPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
 

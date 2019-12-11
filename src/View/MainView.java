@@ -23,7 +23,6 @@ public class MainView extends Application {
         stage = primaryStage;
 
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
 
         stage.setTitle("Stream Till You Sweam");
         stage.setScene(new Scene(root));
@@ -36,7 +35,7 @@ public class MainView extends Application {
 /* Når denne metode kaldes, bliver scenen ændret til MediaPage fra Login */
     /*public static void changeScreen(ActionEvent event) throws IOException
     {
-        Parent mediaPageParent = FXMLLoader.load(getClass().getResource("MediaPage.fxml"));
+        Parent mediaPageParent = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml"));
         Scene mediaPageScene = new Scene(mediaPageParent);
 
         // Denne linje giver Stage information
