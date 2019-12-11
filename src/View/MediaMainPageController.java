@@ -80,7 +80,7 @@ public class MediaMainPageController implements Initializable {
     @FXML
     Button txtSearch;
 
-    protected Media selectedMedia;
+    protected static Media selectedMedia;
 
     MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
@@ -174,6 +174,10 @@ public class MediaMainPageController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Media getSelectedMedia(){
+        return selectedMedia;
     }
 
     public void insertMyList(Media media) {
