@@ -18,12 +18,11 @@ public class Media {
 
         public Media(String title, int year, double rating, String[] categories, BufferedImage img) {
     */
-    public Media(String title, String year, double rating, String[] categories, BufferedImage img) {
+    public Media(String title, String year, double rating, String[] categories) {
         this.title = title;
         this.rating = rating;
         this.categories = categories;
         this.year = year;
-        this.img = img;
     }
 
     public String getTitle() {

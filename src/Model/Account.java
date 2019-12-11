@@ -1,7 +1,8 @@
 package Model;
 
-import java.io.File;
-import java.io.PrintWriter;
+import View.LoginController;
+
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
@@ -19,7 +20,6 @@ public class Account {
         this.email = email;
         this.password = password;
         this.myList = new ArrayList<Media>();
-        createAccountFile();
     }
 
     public void loadMyList(String email) {
@@ -44,8 +44,17 @@ public class Account {
             throw new FileAlreadyExistsException("./Data/Accounts/"+email+".txt");
         }
     }
-    public void addMyList(Media m){
+    public void addToList(Media m){
+        try {
+        File currFile = new File("./Data/Accounts/"+email+".txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Data/Accounts/" + LoginController.getUser().getEmail() + ".txt"), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
+        reader.readLine();
+        String lines = reader.readLine();
+
         myList.add(m);
+        } catch (IOException ie) {
+            ie.getStackTrace();
+        }
     }
 
     public void removeMyList(Media m){
@@ -58,6 +67,10 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public ArrayList<Media> getMyList(){
