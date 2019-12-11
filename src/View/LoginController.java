@@ -82,13 +82,3 @@ public void initialize(URL location, ResourceBundle resources) {
 
     }
 }
-    /* Denne metode gør, at Login label ændrer sig til Login failed */
-/*    public void Login(ActionEvent event){
-        if(txtEmail.getText().equals("user") && txPassword.getText().equals("pass")) {
-            lblStatus.setText("Login Success");
-        }
-        else {
-                lblStatus.setText("Login Failed");
-             }
-    }
-}*/
