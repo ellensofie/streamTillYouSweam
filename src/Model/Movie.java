@@ -7,7 +7,7 @@ import java.io.File;
 public class Movie extends Media{
 
     public Movie(String title, String year,double rating, String[] categories) throws Exception {
-        super(title, year,rating, categories, null);
+        super(title, year,rating, categories);
         setImage();
     }
 
