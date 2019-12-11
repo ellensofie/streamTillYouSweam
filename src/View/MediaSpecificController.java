@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import java.util.Arrays;
+
 import Model.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -58,21 +60,52 @@ public class MediaSpecificController implements Initializable {
     @FXML
     private Label ratingLabel;
 
+    private Media selectedMedia = MediaMainPageController.getSelectedMedia();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setTitleLabel();
+        setCategoriesLabel();
+        setRatingLabel();
+        try {
+            setMediaImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void setTitleLabel(){
+        titleLabel.setText(selectedMedia.getTitle() + " " + "(" + selectedMedia.getReleaseYear() + ")");
+    }
+
+    public void setCategoriesLabel(){
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < selectedMedia.getCategories().length; i++){
+            if(i < selectedMedia.getCategories().length-1){
+                builder.append(selectedMedia.getCategories()[i] + ", ");
+            } else {
+                builder.append(selectedMedia.getCategories()[i]);
+            }
+        }
+        categoriesLabel.setText(builder.toString());
+    }
+
+    public void setRatingLabel(){
+        ratingLabel.setText(Double.toString(selectedMedia.getRating()));
+    }
+
+    public void setMediaImage() throws Exception {
+        BufferedImage bufferedImage = (BufferedImage) selectedMedia.getImage();
+        Image img = SwingFXUtils.toFXImage(bufferedImage, null);
+        mediaImage.setImage(img);
     }
 
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
         Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainpage.fxml ind
-
         Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
 
-    public Label getTitleLabel(){
-        return titleLabel;
-    }
 }

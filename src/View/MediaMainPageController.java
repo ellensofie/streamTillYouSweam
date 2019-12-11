@@ -56,7 +56,7 @@ public class MediaMainPageController implements Initializable{
 
     @FXML Button logOutButton;
 
-        protected Media selectedMedia;
+        protected static Media selectedMedia;
 
 
     MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
@@ -95,12 +95,15 @@ public class MediaMainPageController implements Initializable{
                 ImageView imageView = new ImageView();
 
                 imageView.setOnMouseClicked(mouseEvent -> {
-                    System.out.println(media.getTitle());
+                    Parent root = null;
                     Stage stage = (Stage)imageView.getScene().getWindow(); //Henter button-logins scene/vindue
-                    Parent root = null; //loader MediaPageSpecific.fxml ind
                     try {
-                        root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+                    selectedMedia = new Movie(media.getTitle(),media.getReleaseYear(),media.getRating(),media.getCategories());
+                     //loader MediaPageSpecific.fxml in
+                    root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -186,6 +189,9 @@ public class MediaMainPageController implements Initializable{
         stage.show();
     }
 
+    public static Media getSelectedMedia() {
+        return selectedMedia;
+    }
 }
 
 
