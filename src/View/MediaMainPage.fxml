@@ -16,7 +16,7 @@
          <center>
             <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="666.0" prefWidth="739.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="vBoxFilm" prefHeight="566.0" prefWidth="723.0">
+                  <VBox fx:id="vBoxFilm" prefHeight="1520.0" prefWidth="825.0" >
                      <children>
                         <Label fx:id="lbMyList" text="My List">
                            <font>
@@ -25,10 +25,13 @@
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
                         </Label>
-                        <ScrollPane fx:id="spMyList" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="890.0" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="211.0" prefWidth="140.0" vbarPolicy="NEVER">
                            <content>
-                              <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="890.0" spacing="10.0" />
+                              <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" prefHeight="152.0" prefWidth="829.0" spacing="10.0" />
                            </content>
                            <VBox.margin>
                               <Insets bottom="30.0" left="30.0" right="30.0" />
@@ -39,16 +42,12 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                            <padding>
-                              <Insets top="20.0" />
+                              <Insets left="30.0" top="20.0" />
                            </padding>
                         </Label>
-                        <ScrollPane fx:id="spMovie" hbarPolicy="NEVER" prefHeight="365.0" prefWidth="598.0" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="spMovie" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="211.0" prefWidth="140.0" vbarPolicy="NEVER">
                            <content>
-                              <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" prefHeight="152.0" prefWidth="829.0" spacing="10.0">
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                              </HBox>
+                              <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" prefHeight="152.0" prefWidth="829.0" spacing="10.0"/>
                            </content>
                            <VBox.margin>
                               <Insets bottom="30.0" left="30.0" right="30.0" />
@@ -59,16 +58,12 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                            <padding>
-                              <Insets top="20.0" />
+                              <Insets left="30.0" top="20.0" />
                            </padding>
                         </Label>
-                        <ScrollPane fx:id="spSeries" hbarPolicy="NEVER" prefHeight="444.0" prefWidth="764.0" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="spSeries" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="211.0" prefWidth="140.0" vbarPolicy="NEVER">
                            <content>
-                              <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" prefHeight="230.0" prefWidth="710.0" spacing="10.0">
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                              </HBox>
+                              <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" prefHeight="152.0" prefWidth="829.0" spacing="10.0"/>
                            </content>
                            <VBox.margin>
                               <Insets bottom="30.0" left="30.0" right="30.0" />

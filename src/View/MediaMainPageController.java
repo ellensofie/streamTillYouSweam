@@ -123,7 +123,7 @@ public class MediaMainPageController implements Initializable{
 
     public void insertMyList(Media media) {
         File file = new File("./Data/Accounts/"+LoginController.getUser().getEmail()+".txt");
-        String lines = "";
+        String lines;
         try {
             if (file.isFile()) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Data/Accounts/" + LoginController.getUser().getEmail() + ".txt"), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
