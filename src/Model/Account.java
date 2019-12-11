@@ -59,6 +59,10 @@ public class Account {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public ArrayList<Media> getMyList(){
         return myList;
     }
