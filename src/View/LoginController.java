@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
 
     public void loginProper(ActionEvent event) throws Exception {
         if(new Accounts().loadSingleAccount(txtEmail.getText(),txtPassword.getText())) { //tjek om Email er "user" og password er "pass"
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Data/Accounts/" + txtEmail + ".txt"), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Data/Accounts/" + txtEmail.getText() + ".txt"), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
             String lines = reader.readLine();
             String[] firstLine = lines.split(";");
             user = new Account(firstLine[0],txtEmail.getText(),txtPassword.getText());
