@@ -51,7 +51,7 @@ public class SignUpPageController implements Initializable{
 
     @FXML
     private AnchorPane loginPane;
-    
+
 
     public void initialize(URL location, ResourceBundle resources) {
     }
