@@ -35,9 +35,6 @@ public class SignUpPageController implements Initializable{
     private ImageView btBack;
 
     @FXML
-    private Button testButton;
-
-    @FXML
     private Label lblStatus;
 
     @FXML
@@ -56,11 +53,10 @@ public class SignUpPageController implements Initializable{
     private AnchorPane loginPane;
 
 
-
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
+    /* Metode der styrer btBack. Formålet er at navigere brugeren til Login */
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml")); //loader Login.fxml ind
@@ -82,13 +78,11 @@ public class SignUpPageController implements Initializable{
         else {
             lblStatus.setText("Login Failed");
         }
-
     }
 
     public void createAccount(ActionEvent e) throws IOException {
         Account a = new Account(txtUsername.getText(), txtEmail.getText(), txtPassword.getText());
         a.createAccountFile();
         goBack(e);
-
     }
 }

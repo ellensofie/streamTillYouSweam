@@ -84,6 +84,7 @@ public class MoviesController implements Initializable {
             }
         }
 
+        /* Metode der styrer Button btBackToMMP. Formålet med metoden er at navigerer MediaMainPage */
         public void goBackToMediaMainPage(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBackToMMP.getScene().getWindow(); //Henter button-logins scene/vindue
         Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader Login.fxml ind
@@ -92,4 +93,4 @@ public class MoviesController implements Initializable {
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
-    }
+}

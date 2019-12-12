@@ -69,7 +69,7 @@ public class MediaMainPageController implements Initializable {
     @FXML
     Button logOutButton;
 
-            @FXML Button btMovies;
+    @FXML Button btMovies;
 
     @FXML
     Button btSeries;
@@ -106,6 +106,7 @@ public class MediaMainPageController implements Initializable {
         }
     }
 
+    /* Metode der opretter og indsætter Movie i Imageview med billede*/
     public void insertMovie(Media media) {
         try {
             //Opretter billede
@@ -123,7 +124,7 @@ public class MediaMainPageController implements Initializable {
                 Stage stage = (Stage) imageView.getScene().getWindow(); //Henter button-logins scene/vindue
                 try {
                     selectedMedia = new Movie(media.getTitle(), media.getReleaseYear(), media.getRating(), media.getCategories());
-                    //loader MediaPageSpecific.fxml in
+                    //loader MediaPageSpecific.fxml ind
                     root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -149,6 +150,7 @@ public class MediaMainPageController implements Initializable {
         }
     }
 
+    /* Metode der opretter og indsætter Serie i Imageview med billede */
     public void insertSerie(Media media) {
         //Opretter billede
         try {
@@ -204,6 +206,7 @@ public class MediaMainPageController implements Initializable {
         return selectedMedia;
     }
 
+    /* Metode der opretter og indsætter Mylist i Imageview med billede i Hbox (hbMyList) */
     public void insertMyList(Media media) {
         File file = new File("./Data/Accounts/" + LoginController.getUser().getEmail() + ".txt");
         String lines;
@@ -232,6 +235,7 @@ public class MediaMainPageController implements Initializable {
         }
     }
 
+    /* Metode der kontrollerer logOut Button således at der skiftes til Login siden */
     public void logOut(ActionEvent e) throws IOException {
         Stage stage = (Stage) logOutButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -241,10 +245,14 @@ public class MediaMainPageController implements Initializable {
         stage.show();
     }
 
+    /* Metode der kontroller button Search. Metoden kalder metoden searchFunction således at hvis der klikkes på knappen vil den kører searchFunction metoden */
     public void btSearchFunction() {
         searchFunction();
     } //Søge knap kalder vores søgefunktion
 
+
+    /* Metode der først fjerner alle film og serier fra deres pågældende Hbox og derefter ittererer igennem et for loop.
+    Hvor der tjekkes om det er en movie eller Serie der indeholder det man har indtastet i søgefeltet.*/
     public void searchFunction() {
 
         hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
@@ -262,9 +270,20 @@ public class MediaMainPageController implements Initializable {
         }
     }
 
+    /* Metode der styrer button btMovies. Metoden har til formål at skifte side fra MediaMainPage til siden Movies. */
     public void btMovies() throws IOException {
         Stage stage = (Stage) btMovies.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Movies.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /* Metode der styrer button btSeries. Metoden har til formål at skifte side fra MediaMainPage til siden Series. */
+    public void btSeries() throws IOException {
+        Stage stage = (Stage) btSeries.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("Series.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
