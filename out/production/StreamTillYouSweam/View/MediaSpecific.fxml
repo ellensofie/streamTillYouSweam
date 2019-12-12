@@ -16,7 +16,7 @@
    <left>
       <Pane prefHeight="538.0" prefWidth="345.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="titleLabel" layoutX="31.0" layoutY="57.0" prefHeight="41.0" prefWidth="290.0" style="-fx-text-fill: #14aaeb;" text="Title">
+            <Label fx:id="titleLabel" layoutX="31.0" layoutY="57.0" prefHeight="41.0" prefWidth="325.0" style="-fx-text-fill: #14aaeb;" text="Title">
                <font>
                   <Font size="18.0" />
                </font>
