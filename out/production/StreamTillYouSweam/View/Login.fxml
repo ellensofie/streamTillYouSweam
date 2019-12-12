@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="598.0" prefWidth="876.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginController">
+<BorderPane prefHeight="570.0" prefWidth="656.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginController">
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="536.0" prefWidth="773.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="680.0" prefWidth="1226.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
          <content>
-            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="595.0" prefWidth="874.0" style="-fx-background-color: #000000;">
+            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="613.0" prefWidth="929.0" style="-fx-background-color: #000000;">
                <children>
                     <TextField fx:id="txtEmail" layoutX="243.0" layoutY="276.0" onAction="#login" promptText="Email" style="-fx-background-color: #373F51;">
                         <effect>

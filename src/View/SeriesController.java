@@ -23,31 +23,28 @@ import java.util.ResourceBundle;
 
 public class SeriesController implements Initializable{
 
+    @FXML FlowPane fpSeries;
 
-        @FXML
-        FlowPane fpSeries;
+    @FXML ScrollPane spSeries;
 
-        @FXML
-        ScrollPane spSeries;
+    @FXML Button btBackToMMP;
 
-        @FXML
-        Button btBackToMMP;
+    MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-
-            try {
-                mc.readMediaCollection();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            //Løber gennem alle Media objekter
-            for (Media media : mc.getContent()) {
-                insertSerie(media);
-            }
+        try {
+            mc.readMediaCollection();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        //Løber gennem alle Media objekter
+        for (Media media : mc.getContent()) {
+            insertSerie(media);
+        }
+    }
+
     public void insertSerie(Media media) {
         //Opretter billede
         try {
@@ -73,8 +70,8 @@ public class SeriesController implements Initializable{
         }
     }
 
-
-        public void goBackToMediaMainPage(ActionEvent e) throws IOException {
+    /* Metode der styrer button btBackToMMP. Metoden navigerer brugeren til MediaMainPage. */
+    public void goBackToMediaMainPage(ActionEvent e) throws IOException {
             Stage stage = (Stage)btBackToMMP.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader Login.fxml ind
 

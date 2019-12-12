@@ -100,6 +100,7 @@ public class MediaSpecificController implements Initializable {
         mediaImage.setImage(img);
     }
 
+    /* Metode der styrer btBack. Metoden navigerer brugeren MediaMainPage */
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
         Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainpage.fxml ind
