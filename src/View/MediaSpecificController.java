@@ -60,9 +60,6 @@ public class MediaSpecificController implements Initializable {
     @FXML
     private Label ratingLabel;
 
-    @FXML
-    private Button playMovie;
-
     private Media selectedMedia = MediaMainPageController.getSelectedMedia();
 
     @Override
@@ -131,4 +128,6 @@ public class MediaSpecificController implements Initializable {
         stage.show(); //viser scenen for brugeren
     }
 
+
+    //TODO Indsæt sæsoner og epsioder ved serier
 }
