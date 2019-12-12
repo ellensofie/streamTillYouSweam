@@ -92,4 +92,4 @@ public class MoviesController implements Initializable {
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
-    }
+}
