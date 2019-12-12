@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="538.0" prefWidth="698.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaSpecificController">
    <top>
       <FlowPane prefHeight="0.0" prefWidth="698.0" BorderPane.alignment="CENTER" />
@@ -41,6 +40,24 @@
                      </ImageView>
                  </graphic>
              </Button>
+            <Button fx:id="playButton" layoutX="71.0" layoutY="202.0" mnemonicParsing="false" onAction="#playMovie" prefHeight="158.0" prefWidth="182.0" style="-fx-background-color: #000000;">
+               <graphic>
+                  <ImageView fitHeight="186.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/hiclipart.com.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addMyList" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" style="-fx-background-color: #000000;" text="Add to my list" textFill="#49a1ee">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/pngkey.com-plus-sign-png-44913.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </left>

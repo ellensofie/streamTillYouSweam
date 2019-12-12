@@ -74,6 +74,16 @@ public class MediaSpecificController implements Initializable {
         }
     }
 
+    //TODO Add functionality for "Add to my list"
+
+    public String returnTitleLabelString(){
+        return titleLabel.getText();
+    }
+
+    public Media getSelectedMedia(){
+        return selectedMedia;
+    }
+
     public void setTitleLabel(){
         titleLabel.setText(selectedMedia.getTitle() + " " + "(" + selectedMedia.getReleaseYear() + ")");
     }
@@ -105,6 +115,15 @@ public class MediaSpecificController implements Initializable {
         Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
         Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainpage.fxml ind
         Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
+        stage.setScene(scene); //Sætter scenen
+        stage.show(); //viser scenen for brugeren
+    }
+
+    public void playMovie(ActionEvent e) throws IOException {
+        Stage stage = (Stage)btBack.getScene().getWindow(); //Henter button-logins scene/vindue
+        Parent root = FXMLLoader.load(getClass().getResource("playMovie.fxml")); //loader Login.fxml ind
+
+        Scene scene = new Scene(root); //opretter ny scene med Login.fxml som indhold
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }

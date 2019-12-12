@@ -80,7 +80,7 @@ public class MediaMainPageController implements Initializable {
     @FXML
     Button txtSearch;
 
-    protected static Media selectedMedia;
+    public static Media selectedMedia;
 
     MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
@@ -163,6 +163,30 @@ public class MediaMainPageController implements Initializable {
             //Opretter plads til billede i HBox
             ImageView imageView = new ImageView();
             imageView.setImage(img);
+
+            imageView.setOnMouseClicked(mouseEvent -> {
+                Parent root = null;
+                Stage stage = (Stage) imageView.getScene().getWindow(); //Henter button-logins scene/vindue
+                try {
+                    //TODO Få den til at lave en fucking serie
+                    selectedMedia = new Media(media.getTitle(), media.getReleaseYear(), media.getRating(), media.getCategories());
+                    root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
+                stage.setScene(scene); //Sætter scenen
+                stage.show(); //viser scenen for brugeren
+            });
+
+            imageView.setImage(img);
+            //Opretter plads til billede i HBox
+            //ImageView imageView = new ImageView();
+            //imageView.setImage(img);
+
 
             //Indsætter billede i HBox
             hbSeries.getChildren().addAll(imageView);
