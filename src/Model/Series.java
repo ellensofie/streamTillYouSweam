@@ -12,7 +12,7 @@ public class Series extends Media {
     protected String endYear;
 
     public Series(String title,String year,String endYear, double rating, String[] categories,ArrayList<ArrayList<Episode>> seasons) throws Exception{
-        super(title,year ,rating, categories);
+        super(title,year+endYear ,rating, categories);
         this.seasons = seasons;
         this.endYear = endYear;
         setImage();
