@@ -266,5 +266,3 @@ public class MediaMainPageController implements Initializable {
         stage.show();
     }
 }
-
-

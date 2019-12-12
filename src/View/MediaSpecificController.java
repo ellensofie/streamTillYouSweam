@@ -109,4 +109,6 @@ public class MediaSpecificController implements Initializable {
         stage.show(); //viser scenen for brugeren
     }
 
+
+    //TODO Indsæt sæsoner og epsioder ved serier
 }
