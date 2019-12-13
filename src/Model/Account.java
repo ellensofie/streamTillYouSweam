@@ -62,12 +62,12 @@ public class Account {
         return myList;
     }
 
-    public void addToList(Media m) throws MediaAlreadyInListException{
+    public void addToList(Media m) throws Exception{
         if (!myList.contains(m)) {
             myList.add(m);
             //updateAccountFile();
         }
-        else throw new MediaAlreadyInListException(m.getTitle() + " is already in your list");
+        else throw new Exception(m.getTitle() + " is already in your list");
     }
 
     public void loadList() throws FileAlreadyExistsException{
