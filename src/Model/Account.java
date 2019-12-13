@@ -1,5 +1,6 @@
 package Model;
 
+import Exceptions.MediaAlreadyInMyList;
 import View.LoginController;
 
 import java.io.*;
@@ -62,13 +63,51 @@ public class Account {
         return myList;
     }
 
-    public void addToList(Media m) throws Exception{
+    public void addToList(Media m) throws MediaAlreadyInMyList, FileNotFoundException {
         if (!myList.contains(m)) {
             myList.add(m);
-            //updateAccountFile();
+            try{
+                updateAccountFile();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                throw e; //Hvis en bruger er logget ind og vi ikke kan finde hans brugerfil så er der sket en grov fejl, kast derfor igen
+            }
         }
-        else throw new Exception(m.getTitle() + " is already in your list");
+        else throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
     }
+
+    public void updateAccountFile() throws FileNotFoundException {//opdaterer al oplysning om en bruger herunder navn, email, kode, og liste
+        /* Denne metode skal opdatere brugernes lister i deres txt filer. Den starter ud med at kopiere(gøres ved at læse og derefter skrive det samme ord for ord) brugerens data fra deres txt fil ind i en temp fil.
+        Vi gør så det samme den anden vej rundt, men denne gang kigges der på kontoens myList objekt for at se, hvilken film der skal tilføjes/fjernes. */
+        File tempFile = new File("./Data/Accounts/temp.txt");
+        String tempFileLines = null;
+        String[] tempFileLinesSplit = null;
+        ArrayList<Media> userList = getMyList();
+
+        try {
+            BufferedWriter tempFileWriter = new BufferedWriter(new FileWriter(tempFile, StandardCharsets.ISO_8859_1));
+            tempFileWriter.write(getUsername() + ";" + getEmail() + ";" + getPassword());//skriver brugerens info ind.
+            if (userList.size() != 0) {
+                tempFileWriter.newLine();// laver en ny linje i temp filen
+                for (Media m : userList) {
+                    tempFileWriter.write(m.getTitle());
+                }
+                File userFile = new File("./Data/Accounts/"+getEmail()+".txt");
+                BufferedWriter userFileWriter = new BufferedWriter(new FileWriter(userFile));
+                BufferedReader tempFileReader = new BufferedReader(new InputStreamReader(new FileInputStream(tempFile),StandardCharsets.ISO_8859_1));
+
+                while ( (tempFileLines = tempFileReader.readLine()) !=null ) {
+                    tempFileLinesSplit = tempFileLines.split(";");
+                    for (String tmpString : tempFileLinesSplit) {
+                        userFileWriter.write(tmpString);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void loadList() throws FileAlreadyExistsException{
         try {

@@ -82,7 +82,7 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    /* Get metode der retunerer user. */
+    /* Get metode der returnerer user. */
     public static Account getUser() {
         return user;
     }

@@ -1,7 +1,10 @@
 package View;
 
+import Exceptions.MediaAlreadyInMyList;
+import Model.Account;
 import Model.Media;
 import Model.MediaConstructor;
+import Model.Movie;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,12 +43,14 @@ public class MoviesController implements Initializable {
         }
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
+            if (media instanceof Movie) {
                 insertMovie(media);
             }
         }
+    }
 
-        public void insertMovie (Media media){
-            try {
+    public void insertMovie (Media media){
+        try {
                 //Opretter billede
                 //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
                 //System.out.println("filmplakater/Billeder/" + media.getImage());
@@ -53,16 +58,17 @@ public class MoviesController implements Initializable {
                 BufferedImage bufferedImage = (BufferedImage) media.getImage();
                 Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
-                //Opretter plads til billede i HBox
+                //Opretter plads til billede
                 ImageView imageView = new ImageView();
+                imageView.setImage(img);
 
                 imageView.setOnMouseClicked(mouseEvent -> {
-                    System.out.println(media.getTitle());
-                    Stage stage = (Stage) imageView.getScene().getWindow(); //Henter button-logins scene/vindue
+                    Stage stage = (Stage) imageView.getScene().getWindow();
                     Parent root = null; //loader MediaPageSpecific.fxml ind
                     try {
+                        MediaMainPageController.selectedMedia = media;
                         root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -71,12 +77,6 @@ public class MoviesController implements Initializable {
                     stage.show(); //viser scenen for brugeren
                 });
 
-                imageView.setImage(img);
-                //Opretter plads til billede i HBox
-                //ImageView imageView = new ImageView();
-                //imageView.setImage(img);
-
-                //Indsætter billede i HBox
                 fpMovies.getChildren().addAll(imageView);
 
             } catch (Exception e) {
@@ -86,11 +86,11 @@ public class MoviesController implements Initializable {
 
         /* Metode der styrer Button btBackToMMP. Formålet med metoden er at navigerer MediaMainPage */
         public void goBackToMediaMainPage(ActionEvent e) throws IOException {
-        Stage stage = (Stage)btBackToMMP.getScene().getWindow(); //Henter button-logins scene/vindue
-        Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader Login.fxml ind
+            Stage stage = (Stage)btBackToMMP.getScene().getWindow(); //Henter button-logins scene/vindue
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader Login.fxml ind
 
-        Scene scene = new Scene(root); //opretter ny scene med Login.fxml som indhold
-        stage.setScene(scene); //Sætter scenen
-        stage.show(); //viser scenen for brugeren
-    }
+            Scene scene = new Scene(root); //opretter ny scene med Login.fxml som indhold
+            stage.setScene(scene); //Sætter scenen
+            stage.show(); //viser scenen for brugeren
+        }
 }

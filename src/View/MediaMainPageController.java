@@ -76,9 +76,6 @@ public class MediaMainPageController implements Initializable {
     @FXML
     Button btSeries;
 
-    @FXML
-    Button btSearch;
-
     @FXML TextField txtSearch;
 
 
@@ -124,13 +121,11 @@ public class MediaMainPageController implements Initializable {
 
             imageView.setOnMouseClicked(mouseEvent -> {
                 Parent root = null;
-                Stage stage = (Stage) imageView.getScene().getWindow(); //Henter button-logins scene/vindue
+                Stage stage = (Stage) imageView.getScene().getWindow();
                 try {
                     selectedMedia = new Movie(media.getTitle(), media.getReleaseYear(), media.getRating(), media.getCategories());
                     //loader MediaPageSpecific.fxml ind
                     root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -146,7 +141,7 @@ public class MediaMainPageController implements Initializable {
             //imageView.setImage(img);
 
             //Indsætter billede i HBox
-            hbFilm.getChildren().addAll(imageView);
+            hbFilm.getChildren().add(imageView);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,7 +187,7 @@ public class MediaMainPageController implements Initializable {
             });
 
             //Indsætter billede i HBox
-            hbSeries.getChildren().addAll(imageView);
+            hbSeries.getChildren().add(imageView);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -222,7 +217,7 @@ public class MediaMainPageController implements Initializable {
                         imageView.setImage(img);
 
                         //Indsætter billede i HBox
-                        hbMyList.getChildren().addAll(imageView);
+                        hbMyList.getChildren().add(imageView);
                     }
                 }
             }
@@ -240,11 +235,6 @@ public class MediaMainPageController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    /* Metode der kontroller button Search. Metoden kalder metoden searchFunction således at hvis der klikkes på knappen vil den kører searchFunction metoden */
-    public void btSearchFunction() {
-        searchFunction();
-    } //Søge knap kalder vores søgefunktion
 
 
     /* Metode der først fjerner alle film og serier fra deres pågældende Hbox og derefter ittererer igennem et for loop.

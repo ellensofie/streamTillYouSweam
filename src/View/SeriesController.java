@@ -2,6 +2,8 @@ package View;
 
 import Model.Media;
 import Model.MediaConstructor;
+import Model.Movie;
+import Model.Series;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,29 +43,42 @@ public class SeriesController implements Initializable{
         }
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
-            insertSerie(media);
+            if (media instanceof Series) {
+                insertSerie(media);
+            }
         }
     }
 
     public void insertSerie(Media media) {
         //Opretter billede
         try {
+            //Opretter billede
             //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
             //System.out.println("filmplakater/Billeder/" + media.getImage());
 
             BufferedImage bufferedImage = (BufferedImage) media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
-            //Opretter plads til billede i HBox
+            //Opretter plads til billede
             ImageView imageView = new ImageView();
             imageView.setImage(img);
 
-            //Indsætter billede i HBox
-            fpSeries.getChildren().addAll(imageView);
-
             imageView.setOnMouseClicked(mouseEvent -> {
-                System.out.println("You clicked " + media.getTitle());
+                Stage stage = (Stage) imageView.getScene().getWindow();
+                Parent root = null; //loader MediaPageSpecific.fxml ind
+                try {
+                    MediaMainPageController.selectedMedia = media;
+                    root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
+                stage.setScene(scene); //Sætter scenen
+                stage.show(); //viser scenen for brugeren
             });
+
+            fpSeries.getChildren().addAll(imageView);
 
         } catch (Exception e) {
             e.printStackTrace();

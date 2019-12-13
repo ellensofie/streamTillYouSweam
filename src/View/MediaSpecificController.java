@@ -1,5 +1,6 @@
 package View;
 
+import Exceptions.MediaAlreadyInMyList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,6 +62,9 @@ public class MediaSpecificController implements Initializable {
     @FXML
     private Label ratingLabel;
 
+    @FXML
+    private Label addErrorLabel;
+
     private Media selectedMedia = MediaMainPageController.getSelectedMedia();
 
     @Override
@@ -75,6 +80,21 @@ public class MediaSpecificController implements Initializable {
     }
 
     //TODO Add functionality for "Add to my list"
+    public void addCurrentMediaToUsersList(ActionEvent actionEvent) {
+        Media media = MediaMainPageController.getSelectedMedia();
+        Account account = LoginController.getUser();
+        try {
+            account.addToList(media);
+        } catch (MediaAlreadyInMyList e) {
+            String s = "The serie"; // fejlbesked tjekker om det er en film eller en serie
+            if(media instanceof Movie) {
+                s = "The movie";
+            }
+            addErrorLabel.setText(s + " is already in your list");
+        } catch ( FileNotFoundException e) {
+            addErrorLabel.setText("Hard error: Unable to find users file");
+        }
+    }
 
     public String returnTitleLabelString(){
         return titleLabel.getText();
@@ -127,6 +147,8 @@ public class MediaSpecificController implements Initializable {
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
+
+
 
 
     //TODO Indsæt sæsoner og epsioder ved serier

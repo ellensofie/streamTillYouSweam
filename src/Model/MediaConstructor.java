@@ -1,10 +1,13 @@
 package Model;
 
+import Exceptions.MediaNotFoundException;
+
 import javax.swing.text.AbstractDocument;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class MediaConstructor {
     protected ArrayList<String> pathNames;
@@ -94,12 +97,12 @@ public class MediaConstructor {
         return series;
     }
 
-    //
-    public ArrayList<Media> searchTitle(String title){
+
+    public ArrayList<Media> searchTitle(String searchText) {
         ArrayList<Media> movieWithTitle = new ArrayList<>(); // Lav en tom arrayListe med navn movieWithTitle
         for(Media m : content){ // forloop gennem content som er en liste af alle film og serier
-            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){//Vi bruger .contains så man kun skal indtaste en lille del af titlen for at finde filmen
-                movieWithTitle.add(m);
+            if(m.getTitle().toLowerCase().contains(searchText.toLowerCase())){//Vi bruger .contains så man kun skal indtaste en lille del af titlen for at finde filmen
+                movieWithTitle.add(m); // tilføj til resultat liste.
             }
         }
         return movieWithTitle;
@@ -116,15 +119,24 @@ public class MediaConstructor {
         return movieInCategory;
     }
 
-    public Media getMedia(String title){
-        for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).getTitle().equals(title)) {
-                return content.get(i);
+    /* Henter mediet som har den titel metoden bliver kaldt med, kaster hjemmelavet MediaNotFoundException hvis der ikke findes en film med input titel */
+    public Media getMedia(String title) throws MediaNotFoundException {
+        for (Media m : content) {
+            if (m.getTitle().equals(title)) {
+                return m;
             }
         }
-        return null;
+        throw new MediaNotFoundException("Could not find media with title " + title);
     }
 
+    /* Returner en tilfældig film eller serie fra listen content */
+    public Media getRandomMedia(){
+        Random rand = new Random();
+        int n = rand.nextInt(content.size());
+        return content.get(n);
+    }
+
+    /* Metode der returnerer en liste af media hvis rating er >= det givne input. Bruges til søgning på rating. */
     public ArrayList<Media> searchRating(int rating){
         ArrayList<Media> ratedMovies = new ArrayList<>();
         for(Media m : content){
@@ -133,6 +145,17 @@ public class MediaConstructor {
             }
         }
         return ratedMovies;
+    }
+
+    /* Metode der returnerer en liste af media hvis media har samme releaseyear som input. */
+    public ArrayList<Media> searchReleaseYear(String releaseYear){
+        ArrayList<Media> ReleaseYearMovies = new ArrayList<>();
+        for(Media m : content){
+            if(m.getReleaseYear().equals(releaseYear)){
+                ReleaseYearMovies.add(m);
+            }
+        }
+        return ReleaseYearMovies;
     }
 
 }
