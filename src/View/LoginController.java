@@ -44,6 +44,8 @@ public class LoginController implements Initializable {
 
     private static Account user;
 
+    /* Metode der tjekker om Email og PassWord stemmer overens med user og pass. Hvis dette er tilfældet, og brugeren har klikket på button
+    navigeres til btLogin vil der blive navigeret til MediaMainPage. Hvis ikke vil label (lblStatus) over Email felt ændre sig til Login Failed */
     public void login(ActionEvent event) throws Exception {
         if(txtEmail.getText().equals("user") && txtPassword.getText().equals("pass")) { //tjek om Email er "user" og password er "pass"
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
@@ -56,7 +58,6 @@ public class LoginController implements Initializable {
         else {
             lblStatus.setText("Login Failed");
         }
-
     }
 
     public void loginProper(ActionEvent event) throws Exception {
@@ -81,10 +82,12 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /* Get metode der retunerer user. */
     public static Account getUser() {
         return user;
     }
 
+    /* Metode der styrer button btSignUp. Metoden navigerer brugeren til SignUpPage. */
     public void signUp(ActionEvent event) throws Exception {
             Stage stage = (Stage)btSignup.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml")); //loader SignUpPage.fxml ind
