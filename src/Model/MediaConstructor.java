@@ -94,10 +94,11 @@ public class MediaConstructor {
         return series;
     }
 
+    //
     public ArrayList<Media> searchTitle(String title){
-        ArrayList<Media> movieWithTitle = new ArrayList<>();
-        for(Media m : content){
-            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){ //startsWith i stedet for .Contains & toLowerCase for bedre nemmere søgning
+        ArrayList<Media> movieWithTitle = new ArrayList<>(); // Lav en tom arrayListe med navn movieWithTitle
+        for(Media m : content){ // forloop gennem content som er en liste af alle film og serier
+            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){//Vi bruger .contains så man kun skal indtaste en lille del af titlen for at finde filmen
                 movieWithTitle.add(m);
             }
         }

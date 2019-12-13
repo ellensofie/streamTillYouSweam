@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -78,8 +79,7 @@ public class MediaMainPageController implements Initializable {
     @FXML
     Button btSearch;
 
-    @FXML
-    Button txtSearch;
+    @FXML TextField txtSearch;
 
 
     public static Media selectedMedia;
@@ -250,7 +250,6 @@ public class MediaMainPageController implements Initializable {
     /* Metode der først fjerner alle film og serier fra deres pågældende Hbox og derefter ittererer igennem et for loop.
     Hvor der tjekkes om det er en movie eller Serie der indeholder det man har indtastet i søgefeltet.*/
     public void searchFunction() {
-
         hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
         hbFilm.getChildren().clear();  //fjern alle gamle film når man søger
 
