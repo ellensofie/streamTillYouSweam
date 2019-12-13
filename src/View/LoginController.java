@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane loginPane;
 
-    protected static Account user;
+    private static Account user;
 
     public void login(ActionEvent event) throws Exception {
         if(txtEmail.getText().equals("user") && txtPassword.getText().equals("pass")) { //tjek om Email er "user" og password er "pass"

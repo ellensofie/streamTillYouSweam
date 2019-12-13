@@ -41,25 +41,10 @@ public class Media {
         return categories;
     }
 
-    public String getCategory(int i) {
-        return categories[i];
-    }
-
     public BufferedImage getImage() throws Exception {
         return img;
     }
 
-
-
-
-    /*public void searchCategory() {
-        for (Media m : content) {
-            if (Arrays.toString(m.getCategories()).contains("War")) {
-                System.out.println(m.getTitle());
-            }
-        }
-
-     */
 
 }
 

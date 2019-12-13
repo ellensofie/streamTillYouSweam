@@ -115,6 +115,15 @@ public class MediaConstructor {
         return movieInCategory;
     }
 
+    public Media getMedia(String title){
+        for (int i = 0; i < content.size(); i++) {
+            if (content.get(i).getTitle().equals(title)) {
+                return content.get(i);
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Media> searchRating(int rating){
         ArrayList<Media> ratedMovies = new ArrayList<>();
         for(Media m : content){
