@@ -7,8 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -37,10 +40,16 @@ public class MediaSpecificController implements Initializable {
 
     @FXML private Label addErrorLabel;
 
+    @FXML private ComboBox<String> seasonComboBox = new ComboBox<>();
+
+    private ComboBox<String> episodeComboBox = new ComboBox<>();
+
     private Media selectedMedia = MediaMainPageController.getSelectedMedia();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+            seasonComboBox.setDisable(true);
+            seasonComboBox.setVisible(false);
         setTitleLabel();
         setCategoriesLabel();
         setRatingLabel();
@@ -49,7 +58,34 @@ public class MediaSpecificController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if(selectedMedia instanceof Series){
+            setSeasonComboBox();
+            //setEpisodeComboBox();
+        }
     }
+
+    //TODO kan ikke tilføje episoder
+    public void setSeasonComboBox(){
+        seasonComboBox.setVisible(true);
+        seasonComboBox.setDisable(false);
+        for(int i = 0; i < ((Series) selectedMedia).getSeasons().size(); i++) {
+            seasonComboBox.getItems().add("Season " + (i + 1));
+        }
+    }
+
+        //TODO FUCKING HJÆLP
+    /*
+    public void setEpisodeComboBox(){
+        for(int i = 0; i < ((Series) selectedMedia).getSeasons().size(); i ++){
+            String s = seasonComboBox.getPromptText();
+            int j = Integer.parseInt(s);
+            episodeComboBox.getItems().add("Episode " + ((Series) selectedMedia).getSeasons().get(j));
+        }
+    }
+
+     */
+
+
 
     //TODO Add functionality for "Add to my list"
     public void addCurrentMediaToUsersList(ActionEvent actionEvent) {
@@ -77,7 +113,13 @@ public class MediaSpecificController implements Initializable {
     }
 
     public void setTitleLabel(){
-        titleLabel.setText(selectedMedia.getTitle() + " " + "(" + selectedMedia.getReleaseYear() + ")");
+        if(selectedMedia instanceof Movie) {
+            titleLabel.setText(selectedMedia.getTitle() + " " + "(" + selectedMedia.getReleaseYear() + ")");
+        }
+        if(selectedMedia instanceof Series){
+            String s = (selectedMedia.getTitle() + " (" + selectedMedia.getReleaseYear() + "-" + ((Series) selectedMedia).getEndYear() + ")");
+            titleLabel.setText(s);
+        }
     }
 
     public void setCategoriesLabel(){

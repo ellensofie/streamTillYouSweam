@@ -30,6 +30,16 @@ public class Series extends Media {
         this.img = ImageIO.read(new File(imagePath));
     }
 
+    /*public ArrayList<Episode> getEpisodes(){
+        ArrayList<Episode> episodes = new ArrayList<>();
+        for(int i = 0; i < getSeasons().size(); i++) {
+            episodes.add(getSeasons().get(i).size());
+        }
+        return episodes;
+    }
+
+     */
+
     @Override
     public String getTitle() {
         return super.getTitle();

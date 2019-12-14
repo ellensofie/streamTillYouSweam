@@ -5,19 +5,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="991.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
    <center>
       <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="829.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="vBoxFilm" prefHeight="1550.0" prefWidth="830.0" style="-fx-background-color: #000000;">
                <children>
-                  <Label fx:id="lbMyList" text="My List" textFill="#14aaeb">
+                  <Label fx:id="lbMyList" prefHeight="23.0" prefWidth="107.0" text="My List" textFill="#14aaeb">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -28,12 +29,12 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="730.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="806.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="211.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="208.0" prefWidth="785.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" />
+                        <Insets bottom="30.0" left="30.0" right="20.0" />
                      </VBox.margin>
                   </ScrollPane>
                   <Label fx:id="lbFilm" text="Movies" textFill="#14aaeb">
@@ -52,7 +53,7 @@
                         <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" maxHeight="211.0" prefHeight="211.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" />
+                        <Insets bottom="30.0" left="30.0" right="20.0" />
                      </VBox.margin>
                   </ScrollPane>
                   <Label fx:id="lbSeries" text="Series" textFill="#14aaeb">
@@ -71,7 +72,7 @@
                         <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="211.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" />
+                        <Insets bottom="30.0" left="30.0" right="20.0" />
                      </VBox.margin>
                   </ScrollPane>
                </children>
@@ -82,7 +83,7 @@
    <top>
       <Pane prefHeight="65.0" prefWidth="766.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="985.0" spacing="5.0">
+            <HBox prefHeight="100.0" prefWidth="1055.0" spacing="5.0">
                <children>
                   <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="102.0" promptText="Search text">
                      <HBox.margin>
@@ -93,7 +94,7 @@
                   <Button fx:id="btSeries" mnemonicParsing="false" onAction="#btSeries" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #14aaeb;" text="Series" textAlignment="CENTER" />
                   <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #14aaeb;" text="Log out">
                      <HBox.margin>
-                        <Insets left="520.0" />
+                        <Insets left="600.0" />
                      </HBox.margin></Button>
                </children>
                <padding>
@@ -104,13 +105,33 @@
       </Pane>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="50.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
       </VBox>
    </left>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <ScrollPane hbarPolicy="NEVER" prefHeight="950.0" prefWidth="157.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="416.0" prefWidth="239.0" style="-fx-background-color: #000000;">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: #000000;" text="Movie of the day" textFill="#14aaeb">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="23.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ImageView fx:id="ivMovieOfTheDay" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
    </right>
 </BorderPane>
