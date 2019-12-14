@@ -24,23 +24,17 @@ import java.util.ResourceBundle;
 
 
 public class LoginController implements Initializable {
-    @FXML
-    private Label lblStatus;
+    @FXML private Label lblStatus;
 
-    @FXML
-    private TextField txtEmail;
+    @FXML private TextField txtEmail;
 
-    @FXML
-    private TextField txtPassword;
+    @FXML private TextField txtPassword;
 
-    @FXML
-    private Button btLogin;
+    @FXML private Button btLogin;
 
-    @FXML
-    private Button btSignup;
+    @FXML private Button btSignup;
 
-    @FXML
-    private AnchorPane loginPane;
+    @FXML private AnchorPane loginPane;
 
     private static Account user;
 
@@ -82,7 +76,6 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    /* Get metode der returnerer user. */
     public static Account getUser() {
         return user;
     }
@@ -95,6 +88,5 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root); //opretter ny scene med SignUpPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
-
     }
 }

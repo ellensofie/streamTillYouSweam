@@ -1,7 +1,5 @@
 package View;
 
-import Exceptions.MediaAlreadyInMyList;
-import Model.Account;
 import Model.Media;
 import Model.MediaConstructor;
 import Model.Movie;
@@ -53,7 +51,6 @@ public class MoviesController implements Initializable {
         try {
                 //Opretter billede
                 //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-                //System.out.println("filmplakater/Billeder/" + media.getImage());
 
                 BufferedImage bufferedImage = (BufferedImage) media.getImage();
                 Image img = SwingFXUtils.toFXImage(bufferedImage, null);

@@ -2,7 +2,6 @@ package View;
 
 import Model.Media;
 import Model.MediaConstructor;
-import Model.Movie;
 import Model.Series;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -50,11 +49,9 @@ public class SeriesController implements Initializable{
     }
 
     public void insertSerie(Media media) {
-        //Opretter billede
         try {
             //Opretter billede
             //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
-            //System.out.println("filmplakater/Billeder/" + media.getImage());
 
             BufferedImage bufferedImage = (BufferedImage) media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
@@ -65,7 +62,7 @@ public class SeriesController implements Initializable{
 
             imageView.setOnMouseClicked(mouseEvent -> {
                 Stage stage = (Stage) imageView.getScene().getWindow();
-                Parent root = null; //loader MediaPageSpecific.fxml ind
+                Parent root = null;
                 try {
                     MediaMainPageController.selectedMedia = media;
                     root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
@@ -88,9 +85,9 @@ public class SeriesController implements Initializable{
     /* Metode der styrer button btBackToMMP. Metoden navigerer brugeren til MediaMainPage. */
     public void goBackToMediaMainPage(ActionEvent e) throws IOException {
             Stage stage = (Stage)btBackToMMP.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader Login.fxml ind
+            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
 
-            Scene scene = new Scene(root); //opretter ny scene med Login.fxml som indhold
+            Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
         }

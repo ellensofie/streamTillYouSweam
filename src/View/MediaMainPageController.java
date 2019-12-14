@@ -32,51 +32,39 @@ import java.util.ResourceBundle;
 
 public class MediaMainPageController implements Initializable {
 
-    @FXML
-    BorderPane borderPane;
+    @FXML BorderPane borderPane;
 
-    @FXML
-    ScrollPane bpScrollPane;
+    @FXML ScrollPane bpScrollPane;
 
-    @FXML
-    VBox vBoxFilm;
+    @FXML VBox vBoxFilm;
 
-    @FXML
-    Label lbMyList;
+    @FXML Label lbMyList;
 
-    @FXML
-    ScrollPane spMyList;
+    @FXML ScrollPane spMyList;
 
-    @FXML
-    HBox hbMyList;
+    @FXML HBox hbMyList;
 
-    @FXML
-    Label lbFilm;
+    @FXML Label lbFilm;
 
-    @FXML
-    ScrollPane spMovie;
+    @FXML ScrollPane spMovie;
 
-    @FXML
-    HBox hbFilm;
+    @FXML HBox hbFilm;
 
-    @FXML
-    Label lbSeries;
+    @FXML Label lbSeries;
 
-    @FXML
-    ScrollPane spSeries;
+    @FXML ScrollPane spSeries;
 
-    @FXML
-    HBox hbSeries;
+    @FXML HBox hbSeries;
 
-    @FXML
-    Button logOutButton;
+    @FXML Button logOutButton;
 
     @FXML Button btMovies;
 
-    @FXML
-    Button btSeries;
+    @FXML Button btSeries;
 
     @FXML TextField txtSearch;
+
+    @FXML ImageView ivMovieOfTheDay;
 
 
     public static Media selectedMedia;
@@ -161,10 +149,6 @@ public class MediaMainPageController implements Initializable {
             //Opretter plads til billede i HBox
             ImageView imageView = new ImageView();
             imageView.setImage(img);
-            //Opretter plads til billede i HBox
-            //ImageView imageView = new ImageView();
-            //imageView.setImage(img);
-
 
             //Indsætter billede i HBox
             hbSeries.getChildren().addAll(imageView);

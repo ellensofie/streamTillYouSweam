@@ -31,27 +31,19 @@ import java.util.ResourceBundle;
 
 public class SignUpPageController implements Initializable{
 
-    @FXML
-    private ImageView btBack;
+    @FXML private ImageView btBack;
 
-    @FXML
-    private Label lblStatus;
+    @FXML private Label lblStatus;
 
-    @FXML
-    private TextField txtUsername;
+    @FXML private TextField txtUsername;
 
-    @FXML
-    private TextField txtPassword;
+    @FXML private TextField txtPassword;
 
-    @FXML
-    private TextField txtEmail;
+    @FXML private TextField txtEmail;
 
-    @FXML
-    private Button btSignup;
+    @FXML private Button btSignup;
 
-    @FXML
-    private AnchorPane loginPane;
-
+    @FXML private AnchorPane loginPane;
 
     public void initialize(URL location, ResourceBundle resources) {
     }

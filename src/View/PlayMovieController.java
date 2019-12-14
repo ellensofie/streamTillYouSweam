@@ -17,11 +17,9 @@ import java.util.ResourceBundle;
 
 public class PlayMovieController implements Initializable {
 
-    @FXML
-    private Button btnBack;
+    @FXML private Button btnBack;
 
-    @FXML
-    private Label movieTitle;
+    @FXML private Label movieTitle;
 
     private Media selectMedia = MediaMainPageController.getSelectedMedia();
 
@@ -31,9 +29,9 @@ public class PlayMovieController implements Initializable {
     }
 
     public void goBack(ActionEvent e) throws IOException {
-        Stage stage = (Stage)btnBack.getScene().getWindow(); //Henter button-logins scene/vindue
-        Parent root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml")); //loader MediaMainpage.fxml ind
-        Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
+        Stage stage = (Stage)btnBack.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml")); //loader MediaSpecific.fxml ind
+        Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
