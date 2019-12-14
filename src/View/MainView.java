@@ -27,7 +27,6 @@ public class MainView extends Application {
         stage.setTitle("Stream Till You Sweam");
         stage.setScene(new Scene(root));
         stage.show();
-
     }
 }
 
