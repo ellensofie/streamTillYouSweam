@@ -14,6 +14,7 @@ public class MediaConstructor {
     protected ArrayList<Media> content;
 
     public MediaConstructor() {
+        //Opretter ny arrayliste med vej til txt-filerne for mere overskuelig søgning
         this.pathNames = new ArrayList<>(Arrays.asList("./Data/film.txt", "./Data/serier.txt"));
         this.content = new ArrayList<>();
     }
@@ -72,11 +73,14 @@ public class MediaConstructor {
         content.add(media);
     }
 
+    //Returnerer Arraylisten "content", som indeholder alle medier.
     public ArrayList<Media> getContent(){
         return content;
     }
 
-
+    /*Opretter en ny arrayliste, hvor medier der opfylder søgekriteriet at parametren indeholdes i titlen
+    og derefter returnerer en arrayliste med netop de film, der indeholder parametren i mediets titel
+    */
     public ArrayList<Media> searchTitle(String searchText) {
         ArrayList<Media> movieWithTitle = new ArrayList<>(); // Lav en tom arrayListe med navn movieWithTitle
         for(Media m : content){ // forloop gennem content som er en liste af alle film og serier
@@ -87,7 +91,9 @@ public class MediaConstructor {
         return movieWithTitle;
     }
 
-    //Equals fremfor contains i if-statement?
+    /* Opretter en ny Arrayliste og gennemløber "content". De medier som indeholder genren(category)
+    man søger efter, lægges ind i arraylisten, som derefter bliver returneret.
+     */
     public ArrayList<Media> searchCategory(String category) {
         ArrayList<Media> movieInCategory = new ArrayList<>();
         for(Media m : content){

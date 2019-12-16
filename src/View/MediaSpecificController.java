@@ -75,6 +75,10 @@ public class MediaSpecificController implements Initializable {
         }
     }
 
+    public void setEpisodeComboBox(){
+        int seasonIndex = Integer.parseInt(seasonComboBox.getValue().replaceAll("Season ", "")) -1;
+    }
+
         //TODO FUCKING HJÆLP
     /*
     public void setEpisodeComboBox(){
