@@ -11,16 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jdk.jfr.Category;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -66,6 +64,8 @@ public class MediaMainPageController implements Initializable {
 
     @FXML ImageView ivMovieOfTheDay;
 
+    @FXML ComboBox<String> categoryComboBox;
+
 
     public static Media selectedMedia;
 
@@ -80,6 +80,8 @@ public class MediaMainPageController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        initializeCategory();
 
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
@@ -234,6 +236,41 @@ public class MediaMainPageController implements Initializable {
                 }
                 if (m instanceof Series) { //type tjek på Series
                     insertSerie(m); //hvis mediet er en Series så tilføj
+                }
+            }
+        }
+    }
+
+    public void initializeCategory(){
+        categoryComboBox.getItems().addAll("All media", "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
+                "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Musical",
+                "Mystery", "Romance", "Sci-fi", "Sport", "Thriller", "War", "Western");
+    }
+
+    public void searchCategory() {
+        hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
+        hbFilm.getChildren().clear();  //fjern alle gamle film når man søger
+
+        if (categoryComboBox.getValue() == "All media") {
+            for (Media media : mc.getContent()) {
+                insertMyList(media);
+                //Tjekker om media er en film
+                if (media instanceof Movie) {
+                    insertMovie(media);
+                }
+                if (media instanceof Series) {
+                    insertSerie(media);
+                }
+            }
+        } else {
+            for (Media m : mc.searchCategory(categoryComboBox.getValue())) {
+                {
+                    if (m instanceof Movie) { //type tjek på Movie
+                        insertMovie(m); //hvis mediet er en Movie så tilføj
+                    }
+                    if (m instanceof Series) { //type tjek på Series
+                        insertSerie(m); //hvis mediet er en Series så tilføj
+                    }
                 }
             }
         }
