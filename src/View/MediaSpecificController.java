@@ -75,9 +75,17 @@ public class MediaSpecificController implements Initializable {
         }
     }
 
+    /* Denne bør altså virke men får NullPointerException
     public void setEpisodeComboBox(){
+        episodeComboBox.setVisible(true);
+        episodeComboBox.setDisable(false);
         int seasonIndex = Integer.parseInt(seasonComboBox.getValue().replaceAll("Season ", "")) -1;
+        for(int i = 0; i < ((Series) selectedMedia).getEpisodes(seasonIndex).size(); i++){
+            episodeComboBox.getItems().add("Episode " + (i + 1));
+        }
     }
+
+     */
 
         //TODO FUCKING HJÆLP
     /*

@@ -21,6 +21,10 @@ public class Series extends Media {
         return this.seasons;
     }
 
+    public ArrayList<Episode> getEpisodes(int i){
+        return this.seasons.get(i);
+    }
+
     public String getEndYear() {
         return this.endYear;
     }
