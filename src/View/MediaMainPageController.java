@@ -68,6 +68,8 @@ public class MediaMainPageController implements Initializable {
 
     @FXML TextField ratingTextField;
 
+    @FXML Label usernameLabel;
+
 
     public static Media selectedMedia;
 
@@ -78,6 +80,7 @@ public class MediaMainPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showAll();
         initializeCategory();
+        usernameLabel.setText("Hello, " + LoginController.getUser().getUsername());
         try {
             randomMedia();
         } catch (Exception e) {

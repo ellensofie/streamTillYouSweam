@@ -61,31 +61,32 @@ public class MediaSpecificController implements Initializable {
             e.printStackTrace();
         }
         if(selectedMedia instanceof Series){
-            setSeasonComboBox();
-            //setEpisodeComboBox();
+            enableSeriesSpecific();
         }
     }
 
     //TODO kan ikke tilføje episoder
     public void setSeasonComboBox(){
-        seasonComboBox.setVisible(true);
-        seasonComboBox.setDisable(false);
         for(int i = 0; i < ((Series) selectedMedia).getSeasons().size(); i++) {
             seasonComboBox.getItems().add("Season " + (i + 1));
+            seasonComboBox.setOnAction(e -> setEpisodeComboBox());
         }
     }
 
-    /* Denne bør altså virke men får NullPointerException
-    public void setEpisodeComboBox(){
+    public void enableSeriesSpecific(){
+        seasonComboBox.setVisible(true);
+        seasonComboBox.setDisable(false);
         episodeComboBox.setVisible(true);
         episodeComboBox.setDisable(false);
+        setSeasonComboBox();
+    }
+
+    public void setEpisodeComboBox(){
         int seasonIndex = Integer.parseInt(seasonComboBox.getValue().replaceAll("Season ", "")) -1;
         for(int i = 0; i < ((Series) selectedMedia).getEpisodes(seasonIndex).size(); i++){
             episodeComboBox.getItems().add("Episode " + (i + 1));
         }
     }
-
-     */
 
         //TODO FUCKING HJÆLP
     /*

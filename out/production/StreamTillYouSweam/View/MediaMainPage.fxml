@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
    <center>
-      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="829.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="1000.0" prefWidth="850.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="vBoxFilm" prefHeight="1550.0" prefWidth="830.0" style="-fx-background-color: #000000;">
+            <VBox fx:id="vBoxFilm" prefHeight="900.0" prefWidth="846.0" style="-fx-background-color: #000000;">
                <children>
                   <Label fx:id="lbMyList" prefHeight="23.0" prefWidth="107.0" text="My List" textFill="#14aaeb">
                      <font>
@@ -45,7 +45,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="30.0" top="20.0" />
+                        <Insets left="30.0" top="5.0" />
                      </padding>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -53,7 +53,7 @@
                   </Label>
                   <ScrollPane fx:id="spMovie" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="210.0" prefWidth="730.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" maxHeight="211.0" prefHeight="211.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" maxHeight="211.0" prefHeight="211.0" prefWidth="789.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
                         <Insets bottom="30.0" left="30.0" right="20.0" />
@@ -64,7 +64,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="30.0" top="20.0" />
+                        <Insets left="30.0" top="5.0" />
                      </padding>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -81,12 +81,15 @@
                </children>
             </VBox>
          </content>
+         <padding>
+            <Insets top="-30.0" />
+         </padding>
       </ScrollPane>
    </center>
    <top>
       <Pane prefHeight="65.0" prefWidth="766.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="1055.0" spacing="5.0">
+            <HBox prefHeight="68.0" prefWidth="1055.0" spacing="5.0">
                <children>
                   <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="120.0" promptText="Search text" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
                      <HBox.margin>
@@ -109,6 +112,14 @@
                         <Glow />
                      </effect>
                   </ComboBox>
+                  <Button fx:id="showAllBtn" mnemonicParsing="false" onAction="#showAll" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #373F51;" text="Show all" textAlignment="CENTER" textFill="AZURE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Button>
                   <Button fx:id="btMovies" mnemonicParsing="false" onAction="#btMovies" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #373F51;" text="Movies" textAlignment="CENTER" textFill="AZURE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -125,17 +136,14 @@
                         <Glow />
                      </effect>
                   </Button>
-                  <Button fx:id="showAllBtn" mnemonicParsing="false" onAction="#showAll" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #373F51;" text="Show all" textAlignment="CENTER" textFill="AZURE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </Button>
+                  <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="209.0" style="-fx-text-fill: azure;" text="Label">
+                     <HBox.margin>
+                        <Insets left="140.0" right="15.0" />
+                     </HBox.margin>
+                  </Label>
                   <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #373F51;" text="Log out" textFill="AZURE">
                      <HBox.margin>
-                        <Insets left="350.0" />
+                        <Insets />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -160,9 +168,9 @@
       </VBox>
    </left>
    <right>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="950.0" prefWidth="157.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="210.0" prefWidth="157.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="948.0" prefWidth="155.0" style="-fx-background-color: #000000;">
+            <VBox prefHeight="863.0" prefWidth="155.0" style="-fx-background-color: #000000;">
                <children>
                   <Label prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: #000000;" text="Randomly selected" textFill="#14aaeb">
                      <font>
