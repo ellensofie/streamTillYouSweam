@@ -40,9 +40,9 @@ public class MediaSpecificController implements Initializable {
 
     @FXML private Label addErrorLabel;
 
-    @FXML private ComboBox<String> seasonComboBox = new ComboBox<>();
+    @FXML private ComboBox<String> seasonComboBox;
 
-    private ComboBox<String> episodeComboBox = new ComboBox<>();
+    @FXML private ComboBox<String> episodeComboBox;
 
     private Media selectedMedia = MediaMainPageController.getSelectedMedia();
 
