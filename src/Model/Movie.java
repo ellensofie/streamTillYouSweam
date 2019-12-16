@@ -11,35 +11,15 @@ public class Movie extends Media{
         setImage();
     }
 
-    public void play() {
-    }
 
     public String[] getCategories(){
         return categories;
     }
 
-    public String getCategory(int i){
-        return categories[i];
-    }
 
     public void setImage() throws Exception {
         String imagePath = ("./Billeder/film/"+this.title+".jpg");
         this.img = ImageIO.read(new File(imagePath));
-
-    /*public void show(){
-        String s = " ";
-        System.out.println(title + " (" + year + ")");
-        System.out.print("Genre: ");
-        for (int i = 0; i < categories.length; i++) {
-            System.out.print(categories[i]);
-            if (i != categories.length-1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println();
-        System.out.println("Rating: " + rating + "\n");
-
-     */
 
 
     }

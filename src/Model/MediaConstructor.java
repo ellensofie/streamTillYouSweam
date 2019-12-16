@@ -69,32 +69,11 @@ public class MediaConstructor {
     }
 
     public void addMedia(Media media) {
-
         content.add(media);
     }
 
     public ArrayList<Media> getContent(){
         return content;
-    }
-
-    public ArrayList<Media> getMovies() {
-        ArrayList<Media> movies = new ArrayList<>();
-        for(Media m : content){
-            if(m instanceof Movie){
-                movies.add(m);
-            }
-        }
-        return movies;
-    }
-
-    public ArrayList<Media> getSeries(){
-        ArrayList<Media> series = new ArrayList<>();
-        for(Media m : content){
-            if(m instanceof Series){
-                series.add(m);
-            }
-        }
-        return series;
     }
 
 
@@ -137,7 +116,7 @@ public class MediaConstructor {
     }
 
     /* Metode der returnerer en liste af media hvis rating er >= det givne input. Bruges til søgning på rating. */
-    public ArrayList<Media> searchRating(int rating){
+    public ArrayList<Media> searchRating(double rating){
         ArrayList<Media> ratedMovies = new ArrayList<>();
         for(Media m : content){
             if(m.getRating() >= rating){
@@ -147,6 +126,7 @@ public class MediaConstructor {
         return ratedMovies;
     }
 
+    //TODO er denne relevant?
     /* Metode der returnerer en liste af media hvis media har samme releaseyear som input. */
     public ArrayList<Media> searchReleaseYear(String releaseYear){
         ArrayList<Media> ReleaseYearMovies = new ArrayList<>();

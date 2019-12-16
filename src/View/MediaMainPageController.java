@@ -66,6 +66,8 @@ public class MediaMainPageController implements Initializable {
 
     @FXML ComboBox<String> categoryComboBox;
 
+    @FXML TextField ratingTextField;
+
 
     public static Media selectedMedia;
 
@@ -74,25 +76,12 @@ public class MediaMainPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        showAll();
+        initializeCategory();
         try {
-            mc.readMediaCollection();
+            randomMedia();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        initializeCategory();
-
-        //Løber gennem alle Media objekter
-        for (Media media : mc.getContent()) {
-            insertMyList(media);
-            //Tjekker om media er en film
-            if (media instanceof Movie) {
-                insertMovie(media);
-            }
-            if (media instanceof Series) {
-                insertSerie(media);
-            }
         }
     }
 
@@ -222,6 +211,29 @@ public class MediaMainPageController implements Initializable {
         stage.show();
     }
 
+    public void randomMedia() throws Exception {
+        Media randomMedia = mc.getRandomMedia();
+
+        BufferedImage bufferedImage = (BufferedImage) randomMedia.getImage();
+        Image img = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        ivMovieOfTheDay.setImage(img);
+        ivMovieOfTheDay.setOnMouseClicked(mouseEvent -> {
+            selectedMedia = randomMedia;
+            Parent root = null;
+            Stage stage = (Stage) ivMovieOfTheDay.getScene().getWindow(); //Henter button-logins scene/vindue
+            try {
+                root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
+            stage.setScene(scene); //Sætter scenen
+            stage.show(); //viser scenen for brugeren
+        });
+    }
+
+
 
     /* Metode der først fjerner alle film og serier fra deres pågældende Hbox og derefter ittererer igennem et for loop.
     Hvor der tjekkes om det er en movie eller Serie der indeholder det man har indtastet i søgefeltet.*/
@@ -242,27 +254,58 @@ public class MediaMainPageController implements Initializable {
     }
 
     public void initializeCategory(){
-        categoryComboBox.getItems().addAll("All media", "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
+        categoryComboBox.getItems().addAll("Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
                 "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Musical",
                 "Mystery", "Romance", "Sci-fi", "Sport", "Thriller", "War", "Western");
+    }
+
+
+    public void searchRating(){
+        hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
+        hbFilm.getChildren().clear();  //fjern alle gamle film når man søger
+        String ratingString = ratingTextField.getText().replaceAll(",", ".");
+        if(ratingString.isEmpty()){
+            showAll();
+        }
+        for (Media m : mc.searchRating(Double.parseDouble(ratingString))){
+            {
+                if (m instanceof Movie) { //type tjek på Movie
+                    insertMovie(m); //hvis mediet er en Movie så tilføj
+                }
+                if (m instanceof Series) { //type tjek på Series
+                    insertSerie(m); //hvis mediet er en Series så tilføj
+                }
+            }
+        }
+    }
+
+    public void showAll(){
+        hbFilm.getChildren().clear();
+        hbSeries.getChildren().clear();
+        try {
+            mc.readMediaCollection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Løber gennem alle Media objekter
+        for (Media media : mc.getContent()) {
+            insertMyList(media);
+            //Tjekker om media er en film
+            if (media instanceof Movie) {
+                insertMovie(media);
+            }
+            if (media instanceof Series) {
+                insertSerie(media);
+            }
+        }
+
     }
 
     public void searchCategory() {
         hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
         hbFilm.getChildren().clear();  //fjern alle gamle film når man søger
 
-        if (categoryComboBox.getValue() == "All media") {
-            for (Media media : mc.getContent()) {
-                insertMyList(media);
-                //Tjekker om media er en film
-                if (media instanceof Movie) {
-                    insertMovie(media);
-                }
-                if (media instanceof Series) {
-                    insertSerie(media);
-                }
-            }
-        } else {
             for (Media m : mc.searchCategory(categoryComboBox.getValue())) {
                 {
                     if (m instanceof Movie) { //type tjek på Movie
@@ -274,7 +317,7 @@ public class MediaMainPageController implements Initializable {
                 }
             }
         }
-    }
+
 
     /* Metode der styrer button btMovies. Metoden har til formål at skifte side fra MediaMainPage til siden Movies. */
     public void btMovies() throws IOException {

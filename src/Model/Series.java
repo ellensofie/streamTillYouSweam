@@ -45,5 +45,4 @@ public class Series extends Media {
         return super.getTitle();
     }
 
-    public void play() {}
 }

@@ -13,11 +13,6 @@ public class Media {
     protected String year;
     protected BufferedImage img;
 
-    /*    public Media(){
-        }
-
-        public Media(String title, int year, double rating, String[] categories, BufferedImage img) {
-    */
     public Media(String title, String year, double rating, String[] categories) {
         this.title = title;
         this.rating = rating;

@@ -91,6 +91,4 @@ public class SeriesController implements Initializable{
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
         }
-
-//TODO Få indlæst serier istedet for movies
     }

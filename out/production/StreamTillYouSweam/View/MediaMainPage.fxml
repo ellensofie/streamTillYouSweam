@@ -86,17 +86,19 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="1055.0" spacing="5.0">
                <children>
-                  <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="102.0" promptText="Search text">
+                  <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="198.0" promptText="Search text">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="showAllBtn" mnemonicParsing="false" onAction="#showAll" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #14aaeb  #14aaeb;" text="Show all" />
                   <Button fx:id="btMovies" mnemonicParsing="false" onAction="#btMovies" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color:  #14aaeb;" text="Movies" textAlignment="CENTER" />
                   <Button fx:id="btSeries" mnemonicParsing="false" onAction="#btSeries" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #14aaeb;" text="Series" textAlignment="CENTER" />
-                  <ComboBox fx:id="categoryComboBox" onAction="#searchCategory" prefHeight="27.0" prefWidth="164.0" promptText="Genre" style="-fx-background-color: #14aaeb #14aaeb;" />
+                  <ComboBox fx:id="categoryComboBox" onAction="#searchCategory" prefHeight="27.0" prefWidth="136.0" promptText="Genre" style="-fx-background-color: #14aaeb #14aaeb;" />
+                  <TextField fx:id="ratingTextField" onKeyReleased="#searchRating" prefHeight="27.0" prefWidth="70.0" promptText="Rating" />
                   <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #14aaeb;" text="Log out">
                      <HBox.margin>
-                        <Insets left="600.0" />
+                        <Insets left="150.0" />
                      </HBox.margin></Button>
                </children>
                <padding>
@@ -116,9 +118,9 @@
    <right>
       <ScrollPane hbarPolicy="NEVER" prefHeight="950.0" prefWidth="157.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="416.0" prefWidth="239.0" style="-fx-background-color: #000000;">
+            <VBox prefHeight="523.0" prefWidth="239.0" style="-fx-background-color: #000000;">
                <children>
-                  <Label prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: #000000;" text="Movie of the day" textFill="#14aaeb">
+                  <Label prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: #000000;" text="Randomly selected" textFill="#14aaeb">
                      <font>
                         <Font size="18.0" />
                      </font>

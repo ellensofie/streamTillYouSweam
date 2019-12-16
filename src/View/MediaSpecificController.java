@@ -50,6 +50,8 @@ public class MediaSpecificController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             seasonComboBox.setDisable(true);
             seasonComboBox.setVisible(false);
+            episodeComboBox.setDisable(true);
+            episodeComboBox.setVisible(false);
         setTitleLabel();
         setCategoriesLabel();
         setRatingLabel();
@@ -102,14 +104,6 @@ public class MediaSpecificController implements Initializable {
         } catch ( FileNotFoundException e) {
             addErrorLabel.setText("Hard error: Unable to find users file");
         }
-    }
-
-    public String returnTitleLabelString(){
-        return titleLabel.getText();
-    }
-
-    public Media getSelectedMedia(){
-        return selectedMedia;
     }
 
     public void setTitleLabel(){
