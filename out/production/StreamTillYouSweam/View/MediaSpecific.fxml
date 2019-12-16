@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaSpecificController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaSpecificController">
    <top>
       <FlowPane prefHeight="0.0" prefWidth="698.0" BorderPane.alignment="CENTER" />
    </top>
@@ -23,7 +19,7 @@
                </font>
             </Label>
             <Label fx:id="categoriesLabel" layoutX="31.0" layoutY="90.0" prefHeight="17.0" prefWidth="290.0" style="-fx-text-fill: #14aaeb;" text="Categories" />
-            <Label fx:id="ratingLabel" layoutX="31.0" layoutY="107.0" prefHeight="27.0" prefWidth="55.0" style="-fx-text-fill: #14aaeb;" text="Rating">
+            <Label fx:id="ratingLabel" layoutX="31.0" layoutY="107.0" prefHeight="27.0" prefWidth="77.0" style="-fx-text-fill: #14aaeb;" text="Rating">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,8 +34,14 @@
                          <image>
                              <Image url="@images/kissclipart-arrow-icon-down-icon-891e56077966c796.png" />
                          </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                      </ImageView>
                  </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
              </Button>
             <Button fx:id="playButton" layoutX="71.0" layoutY="202.0" mnemonicParsing="false" onAction="#playMovie" prefHeight="158.0" prefWidth="182.0" style="-fx-background-color: #000000;">
                <graphic>
@@ -47,8 +49,14 @@
                      <image>
                         <Image url="@images/hiclipart.com.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="addMyList" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#addCurrentMediaToUsersList" prefHeight="35.0" prefWidth="129.0" style="-fx-background-color: #000000;" text="Add to my list" textFill="#49a1ee">
                <graphic>
@@ -58,6 +66,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="addErrorLabel" layoutX="177.0" layoutY="498.0" textFill="#49a1ee" />
             <ComboBox fx:id="seasonComboBox" layoutX="31.0" layoutY="134.0" prefHeight="27.0" prefWidth="153.0" promptText="Seasons" />
