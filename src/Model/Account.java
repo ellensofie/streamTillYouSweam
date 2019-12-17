@@ -59,13 +59,29 @@ public class Account {
     }
 
     public void addToList(Media m) throws MediaAlreadyInMyList, FileNotFoundException {
-        if (!myList.contains(m)) {
-            myList.add(m);
-            updateAccountFile();
-        } else throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
+        for (Media med : myList){
+            if (m.getTitle().equals(med.getTitle())){
+                throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
+            }
+        }
+        myList.add(m);
+        updateAccount();
     }
 
-    public void updateAccountFile(){
+    public void removeFromList(Media m) throws Exception{
+        int i = 0;
+        try {
+            while (!(myList.get(i).getTitle().equals(m.getTitle()))) {
+                i++;
+            }
+            myList.remove(i);
+            updateAccount();
+        } catch (Exception e) {
+            throw new Exception(m.getTitle() + " was not in your list");
+        }
+    }
+
+    public void updateAccount() {
         try {
             File userFile = new File("./Data/Accounts/"+this.email+".txt");
             ArrayList<Media> userList = getMyList();
@@ -82,6 +98,7 @@ public class Account {
             e.getStackTrace();
         }
     }
+
     public void loadList() throws FileAlreadyExistsException {
         try {
             mc.readMediaCollection();
