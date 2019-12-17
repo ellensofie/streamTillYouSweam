@@ -17,19 +17,15 @@ public class Account {
     protected MediaConstructor mc = new MediaConstructor();
 
 
-    public Account(String username, String email,String password) throws FileAlreadyExistsException{
+    public Account(String username, String email, String password) throws FileAlreadyExistsException {
         this.username = username;
         this.email = email;
         this.password = password;
         this.myList = new ArrayList<Media>();
     }
 
-    public void loadMyList(String email) {
-        this.myList = new ArrayList<>();
-    }
-
-    public void createAccountFile() throws FileAlreadyExistsException{
-        File currFile = new File("./Data/Accounts/"+email+".txt");
+    public void createAccountFile() throws FileAlreadyExistsException {
+        File currFile = new File("./Data/Accounts/" + email + ".txt");
         if (!currFile.exists()) {
             try {
                 PrintWriter writer = new PrintWriter("./Data/Accounts/" + email + ".txt", StandardCharsets.ISO_8859_1);
@@ -41,9 +37,8 @@ public class Account {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else {
-            throw new FileAlreadyExistsException("./Data/Accounts/"+email+".txt");
+        } else {
+            throw new FileAlreadyExistsException("./Data/Accounts/" + email + ".txt");
         }
     }
 
@@ -59,86 +54,82 @@ public class Account {
         return email;
     }
 
-    public ArrayList<Media> getMyList(){
+    public ArrayList<Media> getMyList() {
         return myList;
     }
 
     public void addToList(Media m) throws MediaAlreadyInMyList, FileNotFoundException {
-        if (!myList.contains(m)) {
-            myList.add(m);
-            try{
-                updateAccountFile();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                throw e; //Hvis en bruger er logget ind og vi ikke kan finde hans brugerfil så er der sket en grov fejl, kast derfor igen
+        for (Media med : myList){
+            if (m.getTitle().equals(med.getTitle())){
+                throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
             }
         }
-        else throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
+        myList.add(m);
+        updateAccount();
     }
 
-    public void updateAccountFile() throws FileNotFoundException {//opdaterer al oplysning om en bruger herunder navn, email, kode, og liste
-        /* Denne metode skal opdatere brugernes lister i deres txt filer. Den starter ud med at kopiere(gøres ved at læse og derefter skrive det samme ord for ord) brugerens data fra deres txt fil ind i en temp fil.
-        Vi gør så det samme den anden vej rundt, men denne gang kigges der på kontoens myList objekt for at se, hvilken film der skal tilføjes/fjernes. */
-        File tempFile = new File("./Data/Accounts/temp.txt");
-        String tempFileLines = null;
-        String[] tempFileLinesSplit = null;
-        ArrayList<Media> userList = getMyList();
-
+    public void removeFromList(Media m) throws Exception{
+        int i = 0;
         try {
-            BufferedWriter tempFileWriter = new BufferedWriter(new FileWriter(tempFile, StandardCharsets.ISO_8859_1));
-            tempFileWriter.write(getUsername() + ";" + getEmail() + ";" + getPassword());//skriver brugerens info ind.
-            if (userList.size() != 0) {
-                tempFileWriter.newLine();// laver en ny linje i temp filen
-                for (Media m : userList) {
-                    tempFileWriter.write(m.getTitle());
-                }
-                File userFile = new File("./Data/Accounts/"+getEmail()+".txt");
-                BufferedWriter userFileWriter = new BufferedWriter(new FileWriter(userFile));
-                BufferedReader tempFileReader = new BufferedReader(new InputStreamReader(new FileInputStream(tempFile),StandardCharsets.ISO_8859_1));
+            while (!(myList.get(i).getTitle().equals(m.getTitle()))) {
+                i++;
+            }
+            myList.remove(i);
+            updateAccount();
+        } catch (Exception e) {
+            throw new Exception(m.getTitle() + " was not in your list");
+        }
+    }
 
-                while ( (tempFileLines = tempFileReader.readLine()) !=null ) {
-                    tempFileLinesSplit = tempFileLines.split(";");
-                    for (String tmpString : tempFileLinesSplit) {
-                        userFileWriter.write(tmpString);
+    public void updateAccount() {
+        try {
+            File userFile = new File("./Data/Accounts/"+this.email+".txt");
+            ArrayList<Media> userList = getMyList();
+            BufferedWriter userFileWriter = new BufferedWriter(new FileWriter(userFile, StandardCharsets.ISO_8859_1));
+            userFileWriter.write(this.username + ";" + this.email + ";" + this.password+";");//skriver brugerens info ind.
+            if (userList.size() != 0) {
+                userFileWriter.newLine();// laver en ny linje i temp filen
+                for (Media m : userList) {
+                    userFileWriter.write(m.getTitle()+";");
+                }
+            }
+            userFileWriter.close();
+        } catch (IOException e) {
+            e.getStackTrace();
+        }
+    }
+
+    public void loadList() throws FileAlreadyExistsException {
+        try {
+            mc.readMediaCollection();
+            File currFile = new File("./Data/Accounts/" + email + ".txt");
+            if (currFile.exists()) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(currFile), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
+                reader.readLine();
+                String lines = reader.readLine();
+                String[] splitLines = lines.split(";");
+                for (int i = 0; i < mc.getContent().size(); i++) {
+                    Media currMedia = mc.getContent().get(i);
+                    for (String string : splitLines) {
+                        if (string.equals(currMedia.getTitle())) {
+                            myList.add(currMedia);
+                        }
                     }
                 }
+            } else {
+                throw new FileAlreadyExistsException("./Data/Accounts/" + email + ".txt");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    public void loadList() throws FileAlreadyExistsException{
-        try {
-            mc.readMediaCollection();
-        File currFile = new File("./Data/Accounts/"+email+".txt");
-        if (currFile.exists()) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(currFile), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
-                reader.readLine();
-                String lines = reader.readLine();
-                String[] splitLines = lines.split(";");
-                for (int i = 0;  i < mc.getContent().size(); i++) {
-                    Media currMedia = mc.getContent().get(i);
-                    for (String string: splitLines) {
-                        if (string.equals(currMedia.getTitle())){
-                            myList.add(currMedia);
-                        }
-                    }
-                }
-        }
-        else {
-            throw new FileAlreadyExistsException("./Data/Accounts/"+email+".txt");
-        } }catch (Exception e) {
-            e.printStackTrace();
-    }
-    }
-
+    /*
     public void setUsername(String username) {
         this.username = username;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
+    }*/
 }

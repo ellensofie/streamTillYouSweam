@@ -5,11 +5,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 
 public class Accounts {
     protected ArrayList<Account> accounts;
-    File[] files;;
+    File[] files;
 
     public Accounts(){
         this.accounts = new ArrayList<>();
@@ -73,6 +74,43 @@ public class Accounts {
             e.printStackTrace();
         }
         return userPassword.equals(password);
+    }
+
+    public Account getSingleAccount(String email) throws FileAlreadyExistsException {
+        File dirPath = new File("./Data/Accounts/"+email+".txt");
+        String lines;
+        Account acc = null;
+        String username;
+        String password;
+        try {
+            MediaConstructor mc = new MediaConstructor();
+            mc.readMediaCollection();
+            if (dirPath.isFile()) {
+                if (dirPath.getName().equals(email + ".txt")) {
+                    //indlæs bruger oplysninger
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dirPath), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
+                    lines = reader.readLine();
+                    String[] lineData = lines.trim().split(";");
+                    username = lineData[0];
+                    password = lineData[2];
+                    acc = new Account(username,email,password);
+
+                    // indlæs brugerens liste af media
+                    if ((lines = reader.readLine()) != null) {
+                        lineData = lines.split(";");
+                        for (String lineDatum : lineData) {
+                            acc.getMyList().add(mc.getMedia(lineDatum));
+                        }
+                    }
+                }
+            }
+            else {
+                System.out.println(email + " does not have a user");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return acc;
     }
 }
 
