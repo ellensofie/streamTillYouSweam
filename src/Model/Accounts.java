@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Accounts {
     protected ArrayList<Account> accounts;
-    File[] files;;
+    File[] files;
 
     public Accounts(){
         this.accounts = new ArrayList<>();
