@@ -34,7 +34,7 @@
                   </Label>
                   <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="806.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="208.0" prefWidth="785.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="219.0" prefWidth="789.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
                         <Insets bottom="30.0" left="30.0" right="20.0" />

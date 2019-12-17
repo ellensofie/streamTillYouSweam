@@ -73,8 +73,7 @@ public class MediaMainPageController implements Initializable {
 
     public static Media selectedMedia;
 
-
-    MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
+    public static MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -187,7 +186,7 @@ public class MediaMainPageController implements Initializable {
                 String[] mediaString = lines.split(";");
                 for (String s : mediaString) {
                     if (s.equals(media.getTitle())) {
-                        BufferedImage bufferedImage = (BufferedImage) media.getImage();
+                        BufferedImage bufferedImage = media.getImage();
                         Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
                         //Opretter plads til billede i HBox
@@ -196,6 +195,24 @@ public class MediaMainPageController implements Initializable {
 
                         //Indsætter billede i HBox
                         hbMyList.getChildren().add(imageView);
+
+                        imageView.setOnMouseClicked(mouseEvent -> {
+                            Parent root = null;
+                            Stage stage = (Stage) imageView.getScene().getWindow();
+                            try {
+                            if (media instanceof Series) {
+                                selectedMedia = new Series(media.getTitle(), media.getReleaseYear(), ((Series) media).getEndYear(), media.getRating(),  media.getCategories(), ((Series) media).getSeasons());
+                            } else if (media instanceof Movie) {
+                                selectedMedia = new Movie(media.getTitle(), media.getReleaseYear(), media.getRating(), media.getCategories());
+                            }
+                                root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            Scene scene = new Scene(root); //opretter ny scene med MediaSpecific.fxml som indhold
+                            stage.setScene(scene); //Sætter scenen
+                            stage.show(); //viser scenen for brugeren
+                        });
                     }
                 }
             }
@@ -205,13 +222,18 @@ public class MediaMainPageController implements Initializable {
     }
 
     /* Metode der kontrollerer logOut Button således at der skiftes til Login siden */
-    public void logOut(ActionEvent e) throws IOException {
+    public void logOut(ActionEvent e) throws IOException{
+
+        try {
         Stage stage = (Stage) logOutButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        } catch (IOException ie) {
+            ie.getStackTrace();
+        }
     }
 
     public void randomMedia() throws Exception {
@@ -236,8 +258,6 @@ public class MediaMainPageController implements Initializable {
         });
     }
 
-
-
     /* Metode der først fjerner alle film og serier fra deres pågældende Hbox og derefter ittererer igennem et for loop.
     Hvor der tjekkes om det er en movie eller Serie der indeholder det man har indtastet i søgefeltet.*/
     public void searchFunction() {
@@ -261,7 +281,6 @@ public class MediaMainPageController implements Initializable {
                 "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Musical",
                 "Mystery", "Romance", "Sci-fi", "Sport", "Thriller", "War", "Western");
     }
-
 
     public void searchRating(){
         hbSeries.getChildren().clear(); //fjern alle gamle serier når man søger
@@ -320,7 +339,6 @@ public class MediaMainPageController implements Initializable {
                 }
             }
         }
-
 
     /* Metode der styrer button btMovies. Metoden har til formål at skifte side fra MediaMainPage til siden Movies. */
     public void btMovies() throws IOException {
