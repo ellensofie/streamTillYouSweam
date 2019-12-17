@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StreamTillYouSweam:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/StreamTillYouSweam_jar</output-path>
+    <root id="archive" name="StreamTillYouSweam.jar">
+      <element id="module-output" name="StreamTillYouSweam" />
+    </root>
+  </artifact>
+</component>
