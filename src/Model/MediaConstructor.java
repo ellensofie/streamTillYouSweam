@@ -36,7 +36,7 @@ public class MediaConstructor {
                     //year
                     String[] yearList = lineData[1].trim().split("-");
                     String startYear = yearList[0];
-                    String endYear = "-present";
+                    String endYear = "present";
                     if (yearList.length == 2) {
                         endYear = yearList[1];
                     }
