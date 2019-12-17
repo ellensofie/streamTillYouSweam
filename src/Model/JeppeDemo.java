@@ -37,11 +37,4 @@ public class JeppeDemo {
     }
 
 
-
 }
-/*
-
-    }
-
-    //Load single account virker. Det samme gør account.addToList
-}*/
