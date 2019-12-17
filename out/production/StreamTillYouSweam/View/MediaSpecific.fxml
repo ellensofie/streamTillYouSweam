@@ -62,6 +62,11 @@
             <Label fx:id="addErrorLabel" layoutX="177.0" layoutY="498.0" textFill="#49a1ee" />
             <ComboBox fx:id="seasonComboBox" layoutX="32.0" layoutY="141.0" prefHeight="27.0" prefWidth="153.0" promptText="Seasons" />
             <ComboBox fx:id="episodeComboBox" layoutX="194.0" layoutY="141.0" prefWidth="150.0" promptText="Episodes" />
+            <Button fx:id="removeButton" layoutX="23.0" layoutY="453.0" mnemonicParsing="false" onAction="#removeCurrentMediaFromUser" prefHeight="30.0" prefWidth="151.0" text="Remove from my list">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="1.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </left>

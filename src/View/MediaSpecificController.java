@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
@@ -44,6 +45,10 @@ public class MediaSpecificController implements Initializable {
 
     @FXML private ComboBox<String> episodeComboBox;
 
+    @FXML private Button removeButton;
+
+    @FXML private Button addButton;
+
     private Media selectedMedia = MediaMainPageController.getSelectedMedia();
 
     @Override
@@ -62,6 +67,14 @@ public class MediaSpecificController implements Initializable {
         }
         if(selectedMedia instanceof Series){
             enableSeriesSpecific();
+        }
+        if ( MediaMainPageController.isMediaInList()) {
+            removeButton.setVisible(true);
+            addButton.setVisible(false);
+        }
+        else {
+            removeButton.setVisible(false);
+            addButton.setVisible(true);
         }
     }
 
@@ -102,20 +115,36 @@ public class MediaSpecificController implements Initializable {
 
 
 
-    //TODO Add functionality for "Add to my list"
     public void addCurrentMediaToUsersList(ActionEvent actionEvent) {
         Media media = MediaMainPageController.getSelectedMedia();
         Account account = LoginController.getUser();
         try {
             account.addToList(media);
         } catch (MediaAlreadyInMyList e) {
-            String s = "The serie"; // fejlbesked tjekker om det er en film eller en serie
+            String s = "This series"; // fejlbesked tjekker om det er en film eller en serie
             if(media instanceof Movie) {
-                s = "The movie";
+                s = "This movie";
             }
             addErrorLabel.setText(s + " is already in your list");
         } catch ( FileNotFoundException e) {
             addErrorLabel.setText("Hard error: Unable to find users file");
+        }
+    }
+
+    public void removeCurrentMediaFromUser() {
+        Media media = MediaMainPageController.getSelectedMedia();
+        Account account = LoginController.getUser();
+        try {
+            account.removeFromList(media);
+        } catch (MediaAlreadyInMyList e) {
+            if(media instanceof Movie) {
+                addErrorLabel.setText("This movie has already been removed from your list");
+            } else {
+                addErrorLabel.setText("This series has already been removed from your list");
+            }
+            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -168,6 +197,7 @@ public class MediaSpecificController implements Initializable {
         stage.setScene(scene); //Sætter scenen
         stage.show(); //viser scenen for brugeren
     }
+
 
     //TODO Indsæt sæsoner og epsioder ved serier
 }

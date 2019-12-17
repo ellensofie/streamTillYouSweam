@@ -34,24 +34,14 @@ public class LoginController implements Initializable {
 
     @FXML private Button btSignup;
 
+    @FXML private Label loginFail;
+
     @FXML private AnchorPane loginPane;
 
     private static Account user;
 
-    /* Metode der tjekker om Email og PassWord stemmer overens med user og pass. Hvis dette er tilfældet, og brugeren har klikket på button
-    navigeres til btLogin vil der blive navigeret til MediaMainPage. Hvis ikke vil label (lblStatus) over Email felt ændre sig til Login Failed */
-    public void login(ActionEvent event) throws Exception {
-        if(txtEmail.getText().equals("user") && txtPassword.getText().equals("pass")) { //tjek om Email er "user" og password er "pass"
-            Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
-            Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
-
-            Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
-            stage.setScene(scene); //Sætter scenen
-            stage.show(); //viser scenen for brugeren
-        }
-        else {
-            lblStatus.setText("Login Failed");
-        }
+    public void initialize(URL location, ResourceBundle resources) {
+        loginFail.setVisible(false);
     }
 
     public void loginProper(ActionEvent event) throws Exception {
@@ -59,7 +49,8 @@ public class LoginController implements Initializable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Data/Accounts/" + txtEmail.getText() + ".txt"), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
             String lines = reader.readLine();
             String[] firstLine = lines.split(";");
-            user = new Account(firstLine[0],txtEmail.getText(),txtPassword.getText());
+            user = new Accounts().getSingleAccount(txtEmail.getText());
+            //user = new Account(firstLine[0],txtEmail.getText(),txtPassword.getText());
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
 
@@ -68,13 +59,13 @@ public class LoginController implements Initializable {
             stage.show(); //viser scenen for brugeren
         }
         else {
-            lblStatus.setText("Login Failed");
+            lblStatus.setVisible(false);
+            loginFail.setVisible(true);
         }
 
     }
 
-    public void initialize(URL location, ResourceBundle resources) {
-    }
+
 
     public static Account getUser() {
         return user;
