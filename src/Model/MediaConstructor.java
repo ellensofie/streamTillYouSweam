@@ -24,13 +24,12 @@ public class MediaConstructor {
             throw new Exception("content has already been filled");
         }
         String lines;
-        ArrayList<ArrayList<Episode>> series = new ArrayList<>();
-        ArrayList<Episode> episodes = new ArrayList<>();
         for (String path : this.pathNames) {
             File file = new File(path);
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
                 while ((lines = reader.readLine()) != null) {
+                    ArrayList<ArrayList<Episode>> series = new ArrayList<>();
                     String[] lineData = lines.trim().split(";");
                     String title = lineData[0];
                     //year
@@ -52,12 +51,13 @@ public class MediaConstructor {
                     if (path.equals("./Data/serier.txt")) {
                         String[] allSeasonsString = lineData[4].trim().split(",");
                         for (String season : allSeasonsString) {
+                            ArrayList<Episode> episodes = new ArrayList<>();
                             String[] currSeason = season.trim().split("-");
                             for (int j = 1; j < Integer.parseInt(currSeason[1]) + 1; j++) {
                                 episodes.add(new Episode("ep" + (j), j));
                             }
+                            series.add(episodes);
                         }
-                        series.add(episodes);
                         content.add(new Series(title, startYear, endYear, rating, categories, series));
                     } else if (path.equals("./Data/film.txt")) {
                         content.add(new Movie(title, startYear, rating, categories));

@@ -73,8 +73,6 @@ public class MediaMainPageController implements Initializable {
 
     public static Media selectedMedia;
 
-    public static boolean mediaInList;
-
     public static MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
     @Override
@@ -282,20 +280,6 @@ public class MediaMainPageController implements Initializable {
         categoryComboBox.getItems().addAll("Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
                 "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Musical",
                 "Mystery", "Romance", "Sci-fi", "Sport", "Thriller", "War", "Western");
-    }
-
-    public static boolean isMediaInList() {
-        try {
-            if (mc.getContent().contains(selectedMedia)){
-                mediaInList = true;
-            }
-            else {
-                mediaInList = false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-            return mediaInList;
     }
 
     public void searchRating(){
