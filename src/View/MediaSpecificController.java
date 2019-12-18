@@ -8,11 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -88,9 +86,8 @@ public class MediaSpecificController implements Initializable {
 
     //TODO kan ikke tilføje episoder
     public void setSeasonComboBox(){
-        for(int i = 0; i < ((Series) selectedMedia).getSeasons().size(); i++) {
-            episodeComboBox.getItems().clear();
-            seasonComboBox.getItems().add(Integer.toString(i + 1));
+        for(int i = 1; i <= ((Series) selectedMedia).getSeasons().size(); i++) {
+            seasonComboBox.getItems().add(Integer.toString(i));
             seasonComboBox.setOnAction(e -> setEpisodeComboBox());
         }
     }
@@ -104,31 +101,14 @@ public class MediaSpecificController implements Initializable {
     }
 
     public void setEpisodeComboBox(){
+        episodeComboBox.getItems().clear();
         int nrSeasons = Integer.parseInt(seasonComboBox.getValue());
-        int nrEps = ((Series) selectedMedia).getEpisodes(nrSeasons).size();
-        //int seasonIndex = Integer.parseInt(seasonComboBox.getValue().replaceAll("Season ", "")) -1;
-        /*for(int i = 0; i < ((Series) selectedMedia).getEpisodes(seasonIndex).size(); i++){
-            episodeComboBox.getItems().add("Episode " + (i + 1));
-        }*/
-        for (int i = 0; i < nrEps;i++) {
-            episodeComboBox.getItems().add(Integer.toString(i + 1));
+        int nrEps = ((Series) selectedMedia).getEpisodes(nrSeasons-1).size();
+        for (int i = 1; i <= nrEps;i++) {
+            episodeComboBox.getItems().add(Integer.toString(i));
         }
 
     }
-
-        //TODO FUCKING HJÆLP
-    /*
-    public void setEpisodeComboBox(){
-        for(int i = 0; i < ((Series) selectedMedia).getSeasons().size(); i ++){
-            String s = seasonComboBox.getPromptText();
-            int j = Integer.parseInt(s);
-            episodeComboBox.getItems().add("Episode " + ((Series) selectedMedia).getSeasons().get(j));
-        }
-    }
-
-     */
-
-
 
     public void addCurrentMediaToUsersList(ActionEvent actionEvent) {
         Media media = MediaMainPageController.getSelectedMedia();

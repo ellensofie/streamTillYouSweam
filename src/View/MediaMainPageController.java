@@ -75,9 +75,12 @@ public class MediaMainPageController implements Initializable {
 
     public static MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
+    public boolean initiated = false;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showAll();
+        initiated = true;
         initializeCategory();
         usernameLabel.setText("Hello, " + LoginController.getUser().getUsername());
         try {
@@ -128,8 +131,7 @@ public class MediaMainPageController implements Initializable {
             e.printStackTrace();
         }
     }
-    //TODO hvordan skal MediaSpecific reagere ved series?
-    /* Metode der opretter og indsætter Serie i Imageview med billede */
+
     public void insertSerie(Media media) {
         //Opretter billede
         try {
@@ -162,9 +164,6 @@ public class MediaMainPageController implements Initializable {
                 stage.setScene(scene); //Sætter scenen
                 stage.show(); //viser scenen for brugeren
             });
-
-            //Indsætter billede i HBox
-            hbSeries.getChildren().add(imageView);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -274,6 +273,9 @@ public class MediaMainPageController implements Initializable {
                 }
             }
         }
+        if(txtSearch.getText().isEmpty()){
+            showAll();
+        }
     }
 
     public void initializeCategory(){
@@ -312,13 +314,14 @@ public class MediaMainPageController implements Initializable {
 
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
-            insertMyList(media);
+            if (!initiated) {
+            insertMyList(media);}
             //Tjekker om media er en film
             if (media instanceof Movie) {
                 insertMovie(media);
             }
             if (media instanceof Series) {
-                insertSerie(media);
+                insertSerie( media);
             }
         }
 
