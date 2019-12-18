@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -123,8 +122,6 @@ public class MediaSpecificController implements Initializable {
                 s = "This movie";
             }
             addErrorLabel.setText(s + " is already in your list");
-        } catch ( FileNotFoundException e) {
-            addErrorLabel.setText("Hard error: Unable to find users file");
         }
     }
 

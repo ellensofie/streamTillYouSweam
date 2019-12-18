@@ -11,11 +11,9 @@ public class Movie extends Media{
         setImage();
     }
 
-
     public String[] getCategories(){
         return categories;
     }
-
 
     public void setImage() throws Exception {
         String imagePath = ("./Billeder/film/"+this.title+".jpg");
@@ -23,6 +21,7 @@ public class Movie extends Media{
 
 
     }
+
     public BufferedImage getImage() throws Exception {
         if (img != null) {
             return this.img;

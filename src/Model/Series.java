@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class Series extends Media {
-    // TODO seasons og episodes kan måske være en list of lists?
     protected ArrayList<ArrayList<Episode>> seasons;
     protected String endYear;
 
@@ -17,6 +16,7 @@ public class Series extends Media {
         this.endYear = endYear;
         setImage();
     }
+
     public ArrayList<ArrayList<Episode>> getSeasons() {
         return this.seasons;
     }

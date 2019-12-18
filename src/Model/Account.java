@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Account {
-    protected String username;
-    protected String password;
-    protected String email;
-    protected ArrayList<Media> myList;
+    private String username;
+    private String password;
+    private String email;
+    private ArrayList<Media> myList;
     protected MediaConstructor mc = MediaConstructor.getInstance();
 
-
-    public Account(String username, String email, String password) throws FileAlreadyExistsException {
+    public Account(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.myList = new ArrayList<Media>();
+        this.myList = new ArrayList<>();
     }
 
     public void createAccountFile() throws FileAlreadyExistsException {
@@ -58,7 +57,7 @@ public class Account {
         return myList;
     }
 
-    public void addToList(Media m) throws MediaAlreadyInMyList, FileNotFoundException {
+    public void addToList(Media m) throws MediaAlreadyInMyList {
         for (Media med : myList){
             if (m.getTitle().equals(med.getTitle())){
                 throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
