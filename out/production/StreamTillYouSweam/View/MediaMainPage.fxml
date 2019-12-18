@@ -15,15 +15,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1055.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="991.0" prefWidth="985.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MediaMainPageController">
    <center>
-      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="1000.0" prefWidth="850.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="bpScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="829.0" style="-fx-background-color: #000000" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="vBoxFilm" prefHeight="900.0" prefWidth="846.0" style="-fx-background-color: #000000;">
+            <VBox fx:id="vBoxFilm" prefHeight="1200.0" prefWidth="830.0" style="-fx-background-color: #000000;">
                <children>
                   <Label fx:id="lbMyList" prefHeight="23.0" prefWidth="107.0" text="My List" textFill="#14aaeb">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Copperplate" size="20.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="10.0" top="30.0" />
@@ -32,20 +32,20 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="806.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="spMyList" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="730.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="219.0" prefWidth="789.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbMyList" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="210.0" prefWidth="730.0" spacing="10.0" style="-fx-background-color: #000000;" />
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="20.0" />
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
                      </VBox.margin>
                   </ScrollPane>
                   <Label fx:id="lbFilm" text="Movies" textFill="#14aaeb">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Copperplate" size="20.0" />
                      </font>
                      <padding>
-                        <Insets left="30.0" top="5.0" />
+                        <Insets left="30.0" top="20.0" />
                      </padding>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -53,15 +53,28 @@
                   </Label>
                   <ScrollPane fx:id="spMovie" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="210.0" prefWidth="730.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" maxHeight="211.0" prefHeight="211.0" prefWidth="789.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbFilm" alignment="BOTTOM_LEFT" maxHeight="211.0" prefHeight="210.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;">
+                           <children>
+                              <Label fx:id="notFoundMovies" prefHeight="201.0" prefWidth="709.0" text="Label" textAlignment="CENTER" textFill="AZURE">
+                                 <font>
+                                    <Font name="Copperplate" size="48.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="250.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="20.0" />
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
                      </VBox.margin>
                   </ScrollPane>
                   <Label fx:id="lbSeries" text="Series" textFill="#14aaeb">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Copperplate" size="20.0" />
                      </font>
                      <padding>
                         <Insets left="30.0" top="5.0" />
@@ -70,28 +83,38 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <ScrollPane fx:id="spSeries" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="730.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="spSeries" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="210.0" prefWidth="729.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="211.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;" />
+                        <HBox fx:id="hbSeries" alignment="BOTTOM_LEFT" maxHeight="-Infinity" prefHeight="210.0" prefWidth="729.0" spacing="10.0" style="-fx-background-color: #000000;">
+                           <children>
+                              <Label fx:id="notFoundSeries" prefHeight="208.0" prefWidth="444.0" text="Label" textAlignment="CENTER" textFill="AZURE">
+                                 <font>
+                                    <Font name="Copperplate" size="48.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="250.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
                      </content>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="20.0" />
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
                      </VBox.margin>
                   </ScrollPane>
                </children>
             </VBox>
          </content>
-         <padding>
-            <Insets top="-30.0" />
-         </padding>
       </ScrollPane>
    </center>
    <top>
       <Pane prefHeight="65.0" prefWidth="766.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="68.0" prefWidth="1055.0" spacing="5.0">
+            <HBox prefHeight="100.0" prefWidth="985.0" spacing="5.0">
                <children>
-                  <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="120.0" promptText="Search text" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
+                  <TextField fx:id="txtSearch" onAction="#searchFunction" onKeyReleased="#searchFunction" prefHeight="27.0" prefWidth="102.0" promptText="Search text" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
@@ -99,7 +122,7 @@
                         <Glow />
                      </effect>
                   </TextField>
-                  <TextField fx:id="ratingTextField" onKeyReleased="#searchRating" prefHeight="27.0" prefWidth="56.0" promptText="Rating" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
+                  <TextField fx:id="ratingTextField" onKeyReleased="#searchRating" prefHeight="27.0" prefWidth="62.0" promptText="Rating" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
                      <effect>
                         <Glow />
                      </effect>
@@ -136,9 +159,9 @@
                         <Glow />
                      </effect>
                   </Button>
-                  <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="209.0" style="-fx-text-fill: azure;" text="Label">
+                  <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="191.0" style="-fx-text-fill: azure;" text="Label">
                      <HBox.margin>
-                        <Insets left="140.0" right="15.0" />
+                        <Insets left="100.0" right="15.0" />
                      </HBox.margin>
                   </Label>
                   <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #373F51;" text="Log out" textFill="AZURE">
@@ -162,29 +185,22 @@
    </top>
    <left>
       <VBox prefHeight="200.0" prefWidth="50.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
       </VBox>
    </left>
    <right>
       <ScrollPane hbarPolicy="NEVER" prefHeight="210.0" prefWidth="157.0" style="-fx-background-color: #000000;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="863.0" prefWidth="155.0" style="-fx-background-color: #000000;">
+            <VBox prefHeight="926.0" prefWidth="155.0" style="-fx-background-color: #000000;">
                <children>
                   <Label prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: #000000;" text="Randomly selected" textFill="#14aaeb">
                      <font>
-                        <Font size="16.5" />
+                        <Font name="Copperplate" size="14" />
                      </font>
                      <VBox.margin>
                         <Insets top="23.0" />
                      </VBox.margin>
                   </Label>
-                  <ImageView fx:id="ivMovieOfTheDay" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ImageView>
+                  <ImageView fx:id="ivMovieOfTheDay" fitHeight="210.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </content>
