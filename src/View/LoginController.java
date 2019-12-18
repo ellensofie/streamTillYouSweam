@@ -53,7 +53,6 @@ public class LoginController implements Initializable {
             //user = new Account(firstLine[0],txtEmail.getText(),txtPassword.getText());
             Stage stage = (Stage)btLogin.getScene().getWindow(); //Henter button-logins scene/vindue
             Parent root = FXMLLoader.load(getClass().getResource("MediaMainPage.fxml")); //loader MediaMainPage.fxml ind
-
             Scene scene = new Scene(root); //opretter ny scene med MediaMainPage.fxml som indhold
             stage.setScene(scene); //Sætter scenen
             stage.show(); //viser scenen for brugeren
@@ -64,8 +63,6 @@ public class LoginController implements Initializable {
         }
 
     }
-
-
 
     public static Account getUser() {
         return user;

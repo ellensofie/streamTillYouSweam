@@ -99,36 +99,4 @@ public class Account {
         }
     }
 
-    public void loadList() throws FileAlreadyExistsException {
-        try {
-            File currFile = new File("./Data/Accounts/" + email + ".txt");
-            if (currFile.exists()) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(currFile), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
-                reader.readLine();
-                String lines = reader.readLine();
-                String[] splitLines = lines.split(";");
-                for (int i = 0; i < mc.getContent().size(); i++) {
-                    Media currMedia = mc.getContent().get(i);
-                    for (String string : splitLines) {
-                        if (string.equals(currMedia.getTitle())) {
-                            myList.add(currMedia);
-                        }
-                    }
-                }
-            } else {
-                throw new FileAlreadyExistsException("./Data/Accounts/" + email + ".txt");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }*/
 }

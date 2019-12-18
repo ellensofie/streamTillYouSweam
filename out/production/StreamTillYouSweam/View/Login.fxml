@@ -51,12 +51,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                     </Button>
-                    <Label layoutX="325.0" layoutY="148.0" prefHeight="36.0" prefWidth="108.0" text=" sweam" textFill="#49a1ee">
+                    <Label layoutX="325.0" layoutY="147.0" prefHeight="42.0" prefWidth="130.0" text=" sweam" textFill="#49a1ee">
                         <font>
                             <Font name="System Bold Italic" size="24.0" />
                         </font>
                     </Label>
-                    <Label layoutX="214.0" layoutY="147.0" prefHeight="41.0" prefWidth="128.0" text="Stream till you" textFill="#247c73">
+                    <Label layoutX="214.0" layoutY="147.0" prefHeight="42.0" prefWidth="130.0" text="Stream till you" textFill="#247c73">
                         <font>
                             <Font size="18.0" />
                         </font>
