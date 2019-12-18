@@ -2,7 +2,6 @@ package Model;
 
 import Exceptions.MediaNotFoundException;
 
-import javax.swing.text.AbstractDocument;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -10,8 +9,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public final class MediaConstructor {
-    private static MediaConstructor mc = null;
 
+    private static MediaConstructor mc = null;
     protected ArrayList<String> pathNames;
     protected ArrayList<Media> content;
 
@@ -146,7 +145,6 @@ public final class MediaConstructor {
         return ratedMovies;
     }
 
-    //TODO er denne relevant?
     /* Metode der returnerer en liste af media hvis media har samme releaseyear som input. */
     public ArrayList<Media> searchReleaseYear(String releaseYear){
         ArrayList<Media> ReleaseYearMovies = new ArrayList<>();

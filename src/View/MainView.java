@@ -20,4 +20,8 @@ public class MainView extends Application {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

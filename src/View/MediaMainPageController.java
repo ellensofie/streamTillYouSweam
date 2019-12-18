@@ -174,7 +174,10 @@ public class MediaMainPageController implements Initializable {
     }
 
     /* Metode der opretter og indsætter Mylist i Imageview med billede i Hbox (hbMyList) */
-    public void insertMyList(Media media) {
+    public void insertMyList(Media media) throws Exception{
+        if (LoginController.getUser().getMyList().isEmpty()) {
+            throw new Exception("User list is empty");
+        }
         File file = new File("./Data/Accounts/" + LoginController.getUser().getEmail() + ".txt");
         String lines;
         try {
@@ -309,7 +312,12 @@ public class MediaMainPageController implements Initializable {
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
             if (!initiated) {
-            insertMyList(media);}
+                try {
+                    insertMyList(media);
+                } catch ( Exception e) {
+                    e.getMessage();
+                }
+            }
             //Tjekker om media er en film
             if (media instanceof Movie) {
                 insertMovie(media);

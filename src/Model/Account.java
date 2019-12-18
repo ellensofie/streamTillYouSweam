@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Account {
-    protected String username;
-    protected String password;
-    protected String email;
-    protected ArrayList<Media> myList;
+    private String username;
+    private String password;
+    private String email;
+    private ArrayList<Media> myList;
     protected MediaConstructor mc = MediaConstructor.getInstance();
 
-
-    public Account(String username, String email, String password) throws FileAlreadyExistsException {
+    public Account(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.myList = new ArrayList<Media>();
+        this.myList = new ArrayList<>();
     }
 
     public void createAccountFile() throws FileAlreadyExistsException {
@@ -58,7 +57,7 @@ public class Account {
         return myList;
     }
 
-    public void addToList(Media m) throws MediaAlreadyInMyList, FileNotFoundException {
+    public void addToList(Media m) throws MediaAlreadyInMyList {
         for (Media med : myList){
             if (m.getTitle().equals(med.getTitle())){
                 throw new MediaAlreadyInMyList(m.getTitle() + " is already in your list");
@@ -99,36 +98,4 @@ public class Account {
         }
     }
 
-    public void loadList() throws FileAlreadyExistsException {
-        try {
-            File currFile = new File("./Data/Accounts/" + email + ".txt");
-            if (currFile.exists()) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(currFile), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.
-                reader.readLine();
-                String lines = reader.readLine();
-                String[] splitLines = lines.split(";");
-                for (int i = 0; i < mc.getContent().size(); i++) {
-                    Media currMedia = mc.getContent().get(i);
-                    for (String string : splitLines) {
-                        if (string.equals(currMedia.getTitle())) {
-                            myList.add(currMedia);
-                        }
-                    }
-                }
-            } else {
-                throw new FileAlreadyExistsException("./Data/Accounts/" + email + ".txt");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }*/
 }
