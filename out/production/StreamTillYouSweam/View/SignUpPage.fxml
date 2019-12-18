@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginPane" prefHeight="496.0" prefWidth="797.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.SignUpPageController">
+<AnchorPane fx:id="loginPane" prefHeight="570.0" prefWidth="656.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.SignUpPageController">
     <children>
-        <Label layoutX="305.0" layoutY="131.0" text="Stream" textFill="#247c73">
+        <Label layoutX="213.0" layoutY="154.0" text="Stream till you" textFill="#247c73">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label layoutX="366.0" layoutY="131.0" text=" till" textFill="#18867b">
+        <Label layoutX="325.0" layoutY="148.0" text=" sweam" textFill="#14aaeb">
             <font>
-                <Font size="18.0" />
+                <Font name="System Bold Italic" size="24.0" />
             </font>
         </Label>
-        <Label layoutX="393.0" layoutY="131.0" text=" you" textFill="#2f8790">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
-        <Label layoutX="429.0" layoutY="131.0" text=" sweam" textFill="#14aaeb">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
-        <TextField fx:id="txtUsername" layoutX="327.0" layoutY="250.0" onAction="#login" promptText="Username" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
+        <TextField fx:id="txtUsername" layoutX="243.0" layoutY="250.0" onAction="#login" promptText="Username" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
             <effect>
                 <Glow />
             </effect>
         </TextField>
-        <PasswordField fx:id="txtPassword" layoutX="327.0" layoutY="296.0" promptText="Password" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
+      <TextField fx:id="txtEmail" layoutX="243.0" layoutY="292.0" onAction="#login" promptText="Email" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
+         <effect>
+            <Glow />
+         </effect>
+      </TextField>
+        <PasswordField fx:id="txtPassword" layoutX="243.0" layoutY="334.0" promptText="Password" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
             <effect>
                 <Glow />
             </effect>
         </PasswordField>
-        <Button fx:id="btSignup" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#createAccount" style="-fx-background-color: #14aaeb;" text="Create user" textAlignment="CENTER">
+        <Button fx:id="btSignup" layoutX="275.0" layoutY="370.0" mnemonicParsing="false" onAction="#createAccount" style="-fx-background-color: #14aaeb;" text="Create user" textAlignment="CENTER">
             <font>
                 <Font name="Helvetica" size="13.0" />
             </font>
@@ -47,28 +47,23 @@
             <Cursor fx:constant="HAND" />
          </cursor>
         </Button>
-        <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="292.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="215.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/user.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="292.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="214.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/lock.png" />
             </image>
         </ImageView>
-        <Label fx:id="lblStatus" layoutX="350.0" layoutY="216.0" prefHeight="23.0" prefWidth="118.0" text="Create a new user" textAlignment="CENTER" textFill="#247c73" />
-      <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="289.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+        <Label fx:id="lblStatus" contentDisplay="CENTER" layoutX="258.0" layoutY="216.0" prefHeight="23.0" prefWidth="99.0" text="Create a new user" textAlignment="CENTER" textFill="#247c73" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="215.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Communication-email-blue-icon.png" />
          </image>
       </ImageView>
       <ButtonBar layoutX="14.0" layoutY="14.0" />
-      <TextField fx:id="txtEmail" layoutX="328.0" layoutY="341.0" onAction="#login" promptText="Email" style="-fx-background-color: #373F51; -fx-text-inner-color: azure;">
-         <effect>
-            <Glow />
-         </effect>
-      </TextField>
       <Button layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="9.0" style="-fx-background-color: #000000;" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="21.0">
          <graphic>
             <ImageView fx:id="btBack" fitHeight="47.0" fitWidth="32.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
@@ -84,5 +79,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="emailErrorLabel" layoutX="191.0" layoutY="214.0" text="Invalid Email, please try again" textFill="#c20a0a" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

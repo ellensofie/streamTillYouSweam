@@ -1,5 +1,6 @@
 package View;
 
+import Exceptions.InvalidEmailException;
 import Model.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -26,8 +27,11 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpPageController implements Initializable{
 
@@ -44,6 +48,8 @@ public class SignUpPageController implements Initializable{
     @FXML private Button btSignup;
 
     @FXML private AnchorPane loginPane;
+
+    @FXML private Label emailErrorLabel;
 
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -72,9 +78,21 @@ public class SignUpPageController implements Initializable{
         }
     }
 
-    public void createAccount(ActionEvent e) throws IOException {
-        Account a = new Account(txtUsername.getText(), txtEmail.getText(), txtPassword.getText());
-        a.createAccountFile();
+    public void createAccount(ActionEvent e) throws IOException, InvalidEmailException {
+        Pattern validPattern =  Pattern.compile("([aA-zZ]|[0-9]|\\.)*@([aA-zZ]|\\.)*\\.[aA-zZ]{1,3}");
+        Matcher patternMatch = validPattern.matcher(txtEmail.getText());
+        if (!patternMatch.matches()) {
+            lblStatus.setVisible(false);
+            emailErrorLabel.setVisible(true);
+            throw new InvalidEmailException(txtEmail.getText()+" is an invalid email");
+        }
+        try {
+            Account a = new Account(txtUsername.getText(), txtEmail.getText(), txtPassword.getText());
+            a.createAccountFile();
+        } catch (Exception f) {
+
+            f.getMessage();
+        }
         goBack(e);
     }
 }
