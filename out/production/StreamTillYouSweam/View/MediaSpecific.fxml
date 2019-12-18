@@ -42,7 +42,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="addErrorLabel" layoutX="177.0" layoutY="498.0" textFill="#49a1ee" />
             <ComboBox fx:id="seasonComboBox" layoutX="32.0" layoutY="128.0" prefHeight="27.0" prefWidth="153.0" promptText="Seasons" />
             <ComboBox fx:id="episodeComboBox" layoutX="196.0" layoutY="128.0" prefHeight="27.0" prefWidth="155.0" promptText="Episodes" />
             <Button fx:id="addButton" layoutX="28.0" layoutY="481.0" mnemonicParsing="false" onAction="#addCurrentMediaToUsersList" style="-fx-background-color: #000000;" text="Add to my list" textFill="#49a1ee">
