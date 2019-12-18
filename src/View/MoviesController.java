@@ -30,15 +30,9 @@ public class MoviesController implements Initializable {
     @FXML Button btBackToMMP;
 
 
-    MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
+    MediaConstructor mc = MediaConstructor.getInstance(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        try {
-            mc.readMediaCollection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
             if (media instanceof Movie) {

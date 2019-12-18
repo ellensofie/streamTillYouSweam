@@ -16,12 +16,7 @@ public class JeppeDemo {
 
     public static void main(String[] args) throws FileAlreadyExistsException {
         Account acc = new Accounts().getSingleAccount("1");
-        MediaConstructor mc = new MediaConstructor();
-        try {
-            mc.readMediaCollection();
-            } catch (Exception e) {
-                e.printStackTrace();
-        }
+        MediaConstructor mc = MediaConstructor.getInstance();
         Media m = mc.getContent().get(75);
         try {
             acc.removeFromList(m);

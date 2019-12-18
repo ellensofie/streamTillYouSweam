@@ -14,7 +14,7 @@ public class Account {
     protected String password;
     protected String email;
     protected ArrayList<Media> myList;
-    protected MediaConstructor mc = new MediaConstructor();
+    protected MediaConstructor mc = MediaConstructor.getInstance();
 
 
     public Account(String username, String email, String password) throws FileAlreadyExistsException {
@@ -101,7 +101,6 @@ public class Account {
 
     public void loadList() throws FileAlreadyExistsException {
         try {
-            mc.readMediaCollection();
             File currFile = new File("./Data/Accounts/" + email + ".txt");
             if (currFile.exists()) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(currFile), StandardCharsets.ISO_8859_1));// charset kan læse svenske symboler.

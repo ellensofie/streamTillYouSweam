@@ -9,17 +9,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class MediaConstructor {
+public final class MediaConstructor {
+    private static MediaConstructor mc = null;
+
     protected ArrayList<String> pathNames;
     protected ArrayList<Media> content;
 
-    public MediaConstructor() {
+    private MediaConstructor() {
         //Opretter ny arrayliste med vej til txt-filerne for mere overskuelig søgning
         this.pathNames = new ArrayList<>(Arrays.asList("./Data/film.txt", "./Data/serier.txt"));
         this.content = new ArrayList<>();
     }
 
-    public void readMediaCollection() throws Exception {
+    public static MediaConstructor getInstance() {
+        if (mc == null) {
+            mc = new MediaConstructor();
+            try {
+            mc.readMediaCollection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return mc;
+    }
+
+    private void readMediaCollection() throws Exception {
         if (content.size() != 0) {
             throw new Exception("content has already been filled");
         }

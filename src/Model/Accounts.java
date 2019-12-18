@@ -83,8 +83,7 @@ public class Accounts {
         String username;
         String password;
         try {
-            MediaConstructor mc = new MediaConstructor();
-            mc.readMediaCollection();
+            MediaConstructor mc = MediaConstructor.getInstance();
             if (dirPath.isFile()) {
                 if (dirPath.getName().equals(email + ".txt")) {
                     //indlæs bruger oplysninger

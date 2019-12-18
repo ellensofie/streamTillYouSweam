@@ -73,7 +73,7 @@ public class MediaMainPageController implements Initializable {
 
     public static Media selectedMedia;
 
-    public static MediaConstructor mc = new MediaConstructor(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
+    public static MediaConstructor mc = MediaConstructor.getInstance(); //Global variabel og ikke kun i Initialize (skal bruges andre steder)
 
     public boolean initiated = false;
 
@@ -306,12 +306,6 @@ public class MediaMainPageController implements Initializable {
     public void showAll(){
         hbFilm.getChildren().clear();
         hbSeries.getChildren().clear();
-        try {
-            mc.readMediaCollection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         //Løber gennem alle Media objekter
         for (Media media : mc.getContent()) {
             if (!initiated) {
