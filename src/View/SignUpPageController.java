@@ -84,7 +84,7 @@ public class SignUpPageController implements Initializable{
         if (!patternMatch.matches()) {
             lblStatus.setVisible(false);
             emailErrorLabel.setVisible(true);
-            throw new InvalidEmailException(txtEmail.getText()+" is an invalid email");
+           throw new InvalidEmailException(txtEmail.getText()+" is an invalid email");
         }
         try {
             Account a = new Account(txtUsername.getText(), txtEmail.getText(), txtPassword.getText());

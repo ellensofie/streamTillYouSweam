@@ -39,9 +39,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-            <Label layoutX="425.0" layoutY="21.0" text="Series" textFill="#14aaeb">
+            <Label layoutX="399.0" layoutY="16.0" text="Series" textFill="#14aaeb">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Copperplate" size="30.0" />
                </font>
             </Label>
             </children>
