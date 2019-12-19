@@ -171,7 +171,7 @@ public class MediaSpecificController implements Initializable {
     }
 
     public void setMediaImage() throws Exception {
-        BufferedImage bufferedImage = (BufferedImage) selectedMedia.getImage();
+        BufferedImage bufferedImage = selectedMedia.getImage();
         Image img = SwingFXUtils.toFXImage(bufferedImage, null);
         mediaImage.setImage(img);
     }

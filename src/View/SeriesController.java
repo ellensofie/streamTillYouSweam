@@ -47,7 +47,7 @@ public class SeriesController implements Initializable{
             //Opretter billede
             //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
 
-            BufferedImage bufferedImage = (BufferedImage) media.getImage();
+            BufferedImage bufferedImage = media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
             //Opretter plads til billede

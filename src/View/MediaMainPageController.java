@@ -97,7 +97,7 @@ public class MediaMainPageController implements Initializable {
             //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
             //System.out.println("filmplakater/Billeder/" + media.getImage());
 
-            BufferedImage bufferedImage = (BufferedImage) media.getImage();
+            BufferedImage bufferedImage = media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
             //Opretter plads til billede i HBox
@@ -138,7 +138,7 @@ public class MediaMainPageController implements Initializable {
             //Image image = new Image(getClass().getResource("filmplakater/Billeder/" + media.getImage()).toExternalForm());
             //System.out.println("filmplakater/Billeder/" + media.getImage());
 
-            BufferedImage bufferedImage = (BufferedImage) media.getImage();
+            BufferedImage bufferedImage = media.getImage();
             Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
             //Opretter plads til billede i HBox
@@ -152,7 +152,7 @@ public class MediaMainPageController implements Initializable {
                 Parent root = null;
                 Stage stage = (Stage) imageView.getScene().getWindow(); //Henter button-logins scene/vindue
                 try {
-                    selectedMedia = new Series(media.getTitle(), media.getReleaseYear(), ((Series) media).getEndYear(), media.getRating(), ((Series) media).getCategories(), ((Series) media).getSeasons());
+                    selectedMedia = new Series(media.getTitle(), media.getReleaseYear(), ((Series) media).getEndYear(), media.getRating(), media.getCategories(), ((Series) media).getSeasons());
                     root = FXMLLoader.load(getClass().getResource("MediaSpecific.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -241,7 +241,7 @@ public class MediaMainPageController implements Initializable {
     public void randomMedia() throws Exception {
         Media randomMedia = mc.getRandomMedia();
 
-        BufferedImage bufferedImage = (BufferedImage) randomMedia.getImage();
+        BufferedImage bufferedImage = randomMedia.getImage();
         Image img = SwingFXUtils.toFXImage(bufferedImage, null);
 
         ivMovieOfTheDay.setImage(img);
@@ -293,14 +293,15 @@ public class MediaMainPageController implements Initializable {
         String ratingString = ratingTextField.getText().replaceAll(",", ".");
         if(ratingString.isEmpty()){
             showAll();
-        }
-        for (Media m : mc.searchRating(Double.parseDouble(ratingString))){
-            {
-                if (m instanceof Movie) { //type tjek på Movie
-                    insertMovie(m); //hvis mediet er en Movie så tilføj
-                }
-                if (m instanceof Series) { //type tjek på Series
-                    insertSerie(m); //hvis mediet er en Series så tilføj
+        } else {
+            for (Media m : mc.searchRating(Double.parseDouble(ratingString))) {
+                {
+                    if (m instanceof Movie) { //type tjek på Movie
+                        insertMovie(m); //hvis mediet er en Movie så tilføj
+                    }
+                    if (m instanceof Series) { //type tjek på Series
+                        insertSerie(m); //hvis mediet er en Series så tilføj
+                    }
                 }
             }
         }
